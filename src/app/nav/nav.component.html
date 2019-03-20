@@ -23,8 +23,8 @@
                  </li>
 
               <li><a routerLink="create">Create Event</a></li>
-              <li><a routerLink="login">Login</a></li>
-              <li><a href="">Logout</a></li>
+              <li><a routerLink="login" *ngIf="!loginFlag">Login</a></li>
+              <li><a (click)="onLogout()" *ngIf="loginFlag">Logout</a></li>
           </ul>
           <ul id="mobile-view" class="sidenav">
               <li>
