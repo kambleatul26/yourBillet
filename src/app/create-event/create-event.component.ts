@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEventComponent implements OnInit {
 
-  constructor() { }
+  isLinear = true;
+
+  constructor() {}
 
   ngOnInit() {
   }

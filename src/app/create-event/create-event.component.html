@@ -1,3 +1,35 @@
-<p>
-  create-event works!
-</p>
+<div class="createEvent">
+    <div style="background-color: white; height: 60px; color: #5D001E;">
+      <h4 class="center">LETS CREATE YOUR EVENT</h4>
+      <a routerLink="../events" class="btn-floating btn-large waves-effect waves-light right" style="margin-right: 10%;background-color: #5D001E"><i class="material-icons">close</i></a>
+    </div>
+    <div style="margin: 10%;height: 400px;">
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step>
+              <form>
+                <ng-template matStepLabel>Fill out your name</ng-template>
+                <div>
+                  <button class="waves-effect btn-small" matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <form>
+                <ng-template matStepLabel>Fill out your address</ng-template>
+                <div>
+                  <button class="waves-effect btn-small" matStepperPrevious>Back</button>
+                  <button class="waves-effect btn-small" matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Done</ng-template>
+              You are now done.
+              <div>
+                <button class="waves-effect btn-small" matStepperPrevious>Back</button>
+                <button class="waves-effect btn-small" (click)="stepper.reset()">Reset</button>
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+    </div>
+</div>

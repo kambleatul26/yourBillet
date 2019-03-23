@@ -4,12 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatStepperModule } from '@angular/material';
+
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { EventsComponent } from './events/events.component';
 
 @NgModule({
   declarations: [
@@ -17,16 +21,20 @@ import { CreateEventComponent } from './create-event/create-event.component';
     NavComponent,
     LoginComponent,
     HomeComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    MatStepperModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'home', component: HomeComponent},
-      {path: 'create', component: CreateEventComponent, canActivate: [AuthGuard]},
+      {path: 'dashboard/create', component: CreateEventComponent},
+      {path: 'dashboard/events', component: EventsComponent},
       {path: '**', component: HomeComponent}
     ])
   ],
