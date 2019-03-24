@@ -7,7 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateEventComponent implements OnInit {
 
-  isLinear = true;
+  isLinear = false;
+
+  lat = 19.2781;
+  lng = 72.8668;
+
+  placeMarker($event) {
+    console.log($event.coords.lat);
+    console.log($event.coords.lng);
+    this.lat = $event.coords.lat;
+    this.lng = $event.coords.lng;
+  }
 
   constructor() {}
 

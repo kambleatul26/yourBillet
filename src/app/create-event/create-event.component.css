@@ -5,3 +5,12 @@ button {
 .createEvent {
   background-color: #fce4ec;
 }
+
+.form-content {
+  margin: 5% 20%;
+}
+
+agm-map {
+  margin: 10%;
+  height: 500px;
+}

@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule } from '@angular/material';
 
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -30,6 +31,9 @@ import { EventsComponent } from './events/events.component';
     FormsModule,
     HttpClientModule,
     MatStepperModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDA2z7JLHOv03Kp-OE6C2DZpW4bQ-2k4-0'
+    }),
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'home', component: HomeComponent},
