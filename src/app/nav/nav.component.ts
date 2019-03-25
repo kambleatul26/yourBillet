@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { GlobalsService } from '../globals.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,9 +9,9 @@ import { AuthService } from '../auth.service';
 })
 export class NavComponent implements OnInit {
 
-  loginFlag: Boolean = false;
+  loginFlag = this.globalsService.loginFlag;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private globalsService: GlobalsService) { }
 
   onLogout() {
     this.authService.logout();
