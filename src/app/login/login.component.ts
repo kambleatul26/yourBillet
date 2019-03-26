@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     if (Form.invalid) {
       return;
     } else {
-      const signData = {name: Form.value.name, email: Form.value.username, password: Form.value.password, phone: Form.value.phone};
+      const signData = {name: Form.value.name, email: Form.value.username1, password: Form.value.password1, phone: Form.value.phone};
       this.authService.signup(signData);
       console.log(signData);
     }

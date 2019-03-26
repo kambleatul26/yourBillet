@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule } from '@angular/material';
 
 import { AgmCoreModule } from '@agm/core';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -23,7 +25,8 @@ import { EventsComponent } from './events/events.component';
     LoginComponent,
     HomeComponent,
     CreateEventComponent,
-    EventsComponent
+    EventsComponent,
+    GooglePlaceDirective,
   ],
   imports: [
     BrowserModule,
@@ -31,8 +34,10 @@ import { EventsComponent } from './events/events.component';
     FormsModule,
     HttpClientModule,
     MatStepperModule,
+    GooglePlaceModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDA2z7JLHOv03Kp-OE6C2DZpW4bQ-2k4-0'
+      apiKey: 'AIzaSyDA2z7JLHOv03Kp-OE6C2DZpW4bQ-2k4-0',
+      libraries: ['places']
     }),
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
