@@ -1,5 +1,5 @@
 <div class="back">
-    <div class="container">
+    <div class="container hide-on-med-and-down">
         <div class="card" style="margin: 0 25%">
           <div class="card-content" style="background-color: #E3AFBC">
             <h4 class="center-align title"><strong>WELCOME</strong></h4>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <a href="#" class="btn waves-effect col s12" style="background-color: #5D001E">Login</a>
+                            <button type="submit" class="btn waves-effect col s12" style="background-color: #5D001E">Login</button>
                         </div>
                     </div>
                     <div class="row" style="display: flex;margin: 5%">
@@ -42,7 +42,7 @@
                                 <img src="https://s3.ap-southeast-1.amazonaws.com/common-resources/assets/google-min.png" height="36px" class="">
                             </div>
                             <div>
-                                <a href="#" type="submit" class="btn waves-effect" style="background-color: #4285F4;">Sign in with Google</a>
+                                <a href="#" class="btn waves-effect" style="background-color: #4285F4;">Sign in with Google</a>
                             </div>
                         </div>
                         <div class="col s6" style="height: 36px;display: flex">
@@ -61,7 +61,131 @@
             <div id="test5">
               <div id="login-page" class="center">
                 <div class="z-depth-6 card-panel">
-                    <form class="login-form" action="" (submit)="onLogin(loginForm)" #loginForm="ngForm">
+                    <form class="login-form" action="" (submit)="onSignup(signForm)" #signForm="ngForm">
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">portrait</i>
+                                <input class="validate" type="text" name="name" ngModel>
+                                <label for="name" data-error="wrong" data-success="right">Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">mail_outline</i>
+                                <input class="validate" type="email" name="username" ngModel>
+                                <label for="email" data-error="wrong" data-success="right">Email</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">lock_outline</i>
+                                <input id="password" type="password" name="password" ngModel>
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">phone</i>
+                                <input class="validate" type="number" name="phone" ngModel>
+                                <label for="phone" data-error="wrong" data-success="right">Phone</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <button type="submit" class="btn waves-effect col s12" style="background-color: #5D001E">SignUp</button>
+                              </div>
+                        </div>
+                        <div class="row" style="display: flex;margin: 5%">
+                            <div class="col s6" style="height: 36px;display: flex">
+                                <div>
+                                    <img src="https://s3.ap-southeast-1.amazonaws.com/common-resources/assets/google-min.png" height="36px" class="">
+                                </div>
+                                <div>
+                                    <a href="#" class="btn waves-effect" style="background-color: #4285F4;">Sign in with Google</a>
+                                </div>
+                            </div>
+                            <div class="col s6" style="height: 36px;display: flex">
+                                <div style="height: 36px;background-color: #4266B2">
+                                    <img src="https://s3.ap-southeast-1.amazonaws.com/common-resources/assets/facebook-min.png" height="36px">
+                                </div>
+                                <div>
+                                    <a href="#" class="btn waves-effect" style="background-color: #4266B2">Sign in with Facebook</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- <div class="container hide-on-med-and-up show-on-medium-and-down">
+        <div class="card">
+          <div class="card-content" style="background-color: #E3AFBC">
+            <h4 class="center-align title"><strong>WELCOME</strong></h4>
+          </div>
+          <div class="card-tabs">
+            <ul class="tabs tabs-fixed-width">
+              <li class="tab"><a href="#test1">Login</a></li>
+              <li class="tab"><a href="#test2">Signup</a></li>
+            </ul>
+          </div>
+          <div class="card-content grey lighten-4">
+            <div id="test1">
+              <div id="login-page" class="center">
+            <div class="z-depth-6 card-panel">
+                <form class="login-form" action="" (submit)="onLogin(loginForm)" #loginForm="ngForm">
+                    <div class="row">
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mail_outline</i>
+                            <input class="validate" id="email1" type="email" name="username" ngModel>
+                            <label for="email1" data-error="wrong" data-success="right">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock_outline</i>
+                            <input id="password1" type="password" name="password" ngModel>
+                            <label for="password1">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button type="submit" class="btn waves-effect col s12" style="background-color: #5D001E">Login</button>
+                        </div>
+                    </div>
+                    <div class="row" style="display: flex">
+                        <div class="col s6" style="height: 36px;display: flex">
+                            <div>
+                                <img src="https://s3.ap-southeast-1.amazonaws.com/common-resources/assets/google-min.png" height="36px" class="">
+                            </div>
+                            <div>
+                                <a href="#" class="btn waves-effect" style="background-color: #4285F4;">Sign in with Google</a>
+                            </div>
+                        </div>
+                        <div class="col s6" style="height: 36px;display: flex">
+                            <div style="height: 36px;background-color: #4266B2">
+                                <img src="https://s3.ap-southeast-1.amazonaws.com/common-resources/assets/facebook-min.png" height="36px">
+                            </div>
+                            <div>
+                                <a href="#" class="btn waves-effect" style="background-color: #4266B2">Sign in with Facebook</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+            </div>
+            <div id="test2">
+              <div id="login-page" class="center">
+                <div class="z-depth-6 card-panel">
+                    <form class="login-form" action="" (submit)="onSignup(signForm)" #signForm="ngForm">
                         <div class="row">
                         </div>
                                                 <div class="row">
@@ -87,16 +211,16 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <a href="#" class="btn waves-effect col s12" style="background-color: #5D001E">SignUp</a>
+                                <button type="submit" class="btn waves-effect col s12" style="background-color: #5D001E">SignUp</button>
                             </div>
                         </div>
-                        <div class="row" style="display: flex;margin: 5%">
+                        <div class="row" style="display: flex">
                             <div class="col s6" style="height: 36px;display: flex">
                                 <div>
                                     <img src="https://s3.ap-southeast-1.amazonaws.com/common-resources/assets/google-min.png" height="36px" class="">
                                 </div>
                                 <div>
-                                    <a href="#" type="submit" class="btn waves-effect" style="background-color: #4285F4;">Sign in with Google</a>
+                                    <a href="#" class="btn waves-effect" style="background-color: #4285F4;">Sign in with Google</a>
                                 </div>
                             </div>
                             <div class="col s6" style="height: 36px;display: flex">
@@ -115,5 +239,5 @@
             </div>
           </div>
         </div>
-    </div>
+    </div> -->
 </div>

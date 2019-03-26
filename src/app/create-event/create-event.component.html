@@ -3,78 +3,152 @@
       <h4 class="center">LETS CREATE YOUR EVENT</h4>
       <a routerLink="../events" class="btn-floating btn-large waves-effect waves-light right" style="margin-right: 10%;background-color: #5D001E"><i class="material-icons">close</i></a>
     </div>
-    <div style="margin: 10%;height: 400px;">
-        <form>
-        <mat-horizontal-stepper [linear]="isLinear" #stepper>
-            <mat-step>
-                <ng-template matStepLabel>Event Details</ng-template>
-                <div class="form-content">
-                    <div class="input-field col s6">
-                      <i class="material-icons prefix">event</i>
-                      <input id="event_name" type="text" class="validate">
-                      <label for="event_name">Event Name</label>
-                    </div>
-                    <div style="display: flex;justify-content: space-between">
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">date_range</i>
-                            <input id="startDate" type="text" class="datepicker">
-                            <label for="startDate">Start Date</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">date_range</i>
-                            <input id="endDate" type="text" class="datepicker">
-                            <label for="endDate">End Date</label>
-                        </div>
-                    </div>
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">timer</i>
-                        <input id="startTime" type="text" class="timepicker">
-                        <label for="startTime">Start Time</label>
-                    </div>
-                  </div>
-                <div>
-                  <button class="waves-effect btn-small" matStepperNext>Next</button>
-                </div>
-            </mat-step>
-            <mat-step>
-                <ng-template matStepLabel>Select Location</ng-template>
-                <div>
-                  <h2 class="center" style="color: #5D001E"><i class="material-icons medium prefix">location_on</i>  SELECT LOCATION</h2>
-                  <agm-map (mapClick)="placeMarker($event)" [latitude]="lat" [longitude]="lng">
-                        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                    </agm-map>
-                </div>
-                <div>
-                  <button class="waves-effect btn-small" matStepperPrevious>Back</button>
-                  <button class="waves-effect btn-small" matStepperNext>Next</button>
-                </div>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Finishing Up</ng-template>
+    <div class="hide-on-med-and-down" style="margin: 10%;height: 400px;">
+      <form>
+      <mat-horizontal-stepper [linear]="isLinear" #stepper>
+          <mat-step>
+              <ng-template matStepLabel>Event Details</ng-template>
               <div class="form-content">
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix">mode_edit</i>
-                      <textarea id="description" class="materialize-textarea"></textarea>
-                      <label for="description">Textarea</label>
+                  <div class="input-field col s6">
+                    <i class="material-icons prefix">event</i>
+                    <input id="event_name" type="text" class="validate">
+                    <label for="event_name">Event Name</label>
                   </div>
-                  <div class="input-field col s12">
-                    <i class="material-icons prefix">list</i>
-                    <select multiple>
-                      <option value="Technical">Technical</option>
-                      <option value="Cultural">Cultural</option>
-                      <option value="Corporate">Corporate</option>
-                      <option value="Sports">Sports</option>
-                      <option value="Fun">Fun</option>
-                    </select>
-                    <label>Event Category</label>
+                  <div style="display: flex;justify-content: space-between">
+                      <div class="input-field col s6">
+                          <i class="material-icons prefix">date_range</i>
+                          <input id="startDate" type="text" class="datepicker">
+                          <label for="startDate">Start Date</label>
+                      </div>
+                      <div class="input-field col s6">
+                          <i class="material-icons prefix">date_range</i>
+                          <input id="endDate" type="text" class="datepicker">
+                          <label for="endDate">End Date</label>
+                      </div>
                   </div>
+                  <div class="input-field col s6">
+                      <i class="material-icons prefix">timer</i>
+                      <input id="startTime" type="text" class="timepicker">
+                      <label for="startTime">Start Time</label>
+                  </div>
+                </div>
+              <div>
+                <button class="waves-effect btn-small" matStepperNext>Next</button>
+              </div>
+          </mat-step>
+          <mat-step>
+              <ng-template matStepLabel>Select Location</ng-template>
+              <div>
+                <h2 class="center" style="color: #5D001E"><i class="material-icons medium prefix">location_on</i>  SELECT LOCATION</h2>
+                <agm-map (mapClick)="placeMarker($event)" [latitude]="lat" [longitude]="lng">
+                      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                  </agm-map>
               </div>
               <div>
                 <button class="waves-effect btn-small" matStepperPrevious>Back</button>
-                <button class="waves-effect btn-small" (click)="stepper.reset()">Reset</button>
+                <button class="waves-effect btn-small" matStepperNext>Next</button>
               </div>
-            </mat-step>
-          </mat-horizontal-stepper>
-        </form>
-      </div>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Finishing Up</ng-template>
+            <div class="form-content">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="description" class="materialize-textarea"></textarea>
+                    <label for="description">Textarea</label>
+                </div>
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">list</i>
+                  <select multiple>
+                    <option value="Technical">Technical</option>
+                    <option value="Cultural">Cultural</option>
+                    <option value="Corporate">Corporate</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Fun">Fun</option>
+                  </select>
+                  <label>Event Category</label>
+                </div>
+            </div>
+            <div>
+              <button class="waves-effect btn-small" matStepperPrevious>Back</button>
+              <button class="waves-effect btn-small" (click)="stepper.reset()">Reset</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </form>
+    </div>
+    <div class="hide-on-large-only" style="height: 400px;">
+      <form>
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+          <mat-step>
+              <ng-template matStepLabel>Event Details</ng-template>
+              <div class="form-content">
+                  <div class="input-field col s6">
+                    <i class="material-icons prefix">event</i>
+                    <input id="event_name" type="text" class="validate">
+                    <label for="event_name">Event Name</label>
+                  </div>
+                  <div style="display: flex;justify-content: space-between">
+                      <div class="input-field col s6">
+                          <i class="material-icons prefix">date_range</i>
+                          <input id="startDate" type="text" class="datepicker">
+                          <label for="startDate">Start</label>
+                      </div>
+                      <div class="input-field col s6">
+                          <i class="material-icons prefix">date_range</i>
+                          <input id="endDate" type="text" class="datepicker">
+                          <label for="endDate">End</label>
+                      </div>
+                  </div>
+                  <div class="input-field col s6">
+                      <i class="material-icons prefix">timer</i>
+                      <input id="startTime" type="text" class="timepicker">
+                      <label for="startTime">Start Time</label>
+                  </div>
+                </div>
+              <div>
+                <button class="waves-effect btn-small" matStepperNext>Next</button>
+              </div>
+          </mat-step>
+          <mat-step>
+              <ng-template matStepLabel>Select Location</ng-template>
+              <div>
+                <h2 class="center" style="color: #5D001E"><i class="material-icons medium prefix">location_on</i>  SELECT LOCATION</h2>
+                <agm-map (mapClick)="placeMarker($event)" [latitude]="lat" [longitude]="lng">
+                      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                  </agm-map>
+              </div>
+              <div>
+                <button class="waves-effect btn-small" matStepperPrevious>Back</button>
+                <button class="waves-effect btn-small" matStepperNext>Next</button>
+              </div>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Finishing Up</ng-template>
+            <div class="form-content">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="description" class="materialize-textarea"></textarea>
+                    <label for="description">Textarea</label>
+                </div>
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">list</i>
+                  <select multiple>
+                    <option value="Technical">Technical</option>
+                    <option value="Cultural">Cultural</option>
+                    <option value="Corporate">Corporate</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Fun">Fun</option>
+                  </select>
+                  <label>Event Category</label>
+                </div>
+            </div>
+            <div>
+              <button class="waves-effect btn-small" matStepperPrevious>Back</button>
+              <button class="waves-effect btn-small" (click)="stepper.reset()">Reset</button>
+            </div>
+          </mat-step>
+        </mat-vertical-stepper>
+      </form>
+    </div>
 </div>

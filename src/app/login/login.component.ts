@@ -12,13 +12,23 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   onLogin(Form: NgForm) {
+    console.log('hi');
     if (Form.invalid) {
       return;
     } else {
       const authData = {email: Form.value.username, password: Form.value.password};
       this.authService.login(authData);
       console.log(authData);
-      console.log('Login successful');
+    }
+  }
+
+  onSignup(Form: NgForm) {
+    if (Form.invalid) {
+      return;
+    } else {
+      const signData = {name: Form.value.name, email: Form.value.username, password: Form.value.password, phone: Form.value.phone};
+      this.authService.signup(signData);
+      console.log(signData);
     }
   }
 
