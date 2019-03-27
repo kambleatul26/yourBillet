@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+declare let $: any;
 declare var carousel: Function;
 
 @Component({
@@ -10,10 +11,15 @@ declare var carousel: Function;
 export class HomeComponent implements OnInit {
 
   constructor() {
-    carousel();
   }
 
   ngOnInit() {
+    function carousel() {
+      $(document).ready(function(){
+        $('.slider').slider({full_width: true});
+      });
+    }
+    carousel();
   }
 
 }

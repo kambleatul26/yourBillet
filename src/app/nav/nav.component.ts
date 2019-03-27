@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
+declare let $: any;
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -19,6 +21,11 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    $(document).ready(function () {
+      M.AutoInit();
+    });
+
     this.loginFlag = localStorage.getItem('isLoggedIn');
     // console.log(this.loginFlag);
     if (this.loginFlag === 'true') {
