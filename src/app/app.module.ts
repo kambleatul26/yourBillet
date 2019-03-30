@@ -17,6 +17,10 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 import { EventsComponent } from './events/events.component';
+import { BookingsComponent } from './bookings/bookings.component';
+import { AlleventsComponent } from './allevents/allevents.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,10 @@ import { EventsComponent } from './events/events.component';
     CreateEventComponent,
     EventsComponent,
     GooglePlaceDirective,
+    BookingsComponent,
+    AlleventsComponent,
+    StatisticsComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +51,11 @@ import { EventsComponent } from './events/events.component';
       {path: 'login', component: LoginComponent},
       {path: 'home', component: HomeComponent},
       {path: 'dashboard/create', component: CreateEventComponent},
-      {path: 'dashboard/events', component: EventsComponent},
+      {path: 'dashboard/myevents', component: EventsComponent},
+      {path: 'dashboard/allevents', component: AlleventsComponent},
+      {path: 'dashboard/bookings', component: BookingsComponent},
+      {path: 'dashboard/statistics', component: StatisticsComponent},
+      {path: 'dashboard/myprofile', component: UserProfileComponent},
       {path: '**', component: HomeComponent}
     ])
   ],
