@@ -25,17 +25,18 @@ export class AuthService {
       }
     }, err => {
       console.log('Not Successful');
-      this.router.navigate(['/home']);
       console.log(err);
     });
   }
 
-  signup(signData): void {
+  signup(signData): boolean {
+    let flag = false;
     this.http.post('https://1e57aa06.ngrok.io/user/signup', signData)
     .subscribe(res => {
       if (res['code'] === 2) {
         console.log(res);
         console.log('Signup successful');
+        flag = true;
       } else {
         console.log('Not Successful');
       }
@@ -43,6 +44,7 @@ export class AuthService {
       console.log('Not Successful');
       console.log(err);
     });
+    return flag;
   }
 
   logout(): void {

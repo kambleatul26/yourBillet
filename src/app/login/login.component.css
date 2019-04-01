@@ -7,3 +7,11 @@
   margin: auto;
   padding: 5% 0;
 }
+
+.tabs .tab a{
+  color:#5D001E !important;
+}
+
+tabs .tab a.active {
+	color: #5D001E;
+}

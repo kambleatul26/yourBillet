@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
+import * as M from 'materialize-css/dist/js/materialize';
+
 declare let $: any;
 
 @Component({
