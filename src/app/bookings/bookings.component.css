@@ -1,0 +1,12 @@
+.tabs .tab a{
+  color:#5D001E !important;
+}
+
+tabs .tab a.active {
+	color: #5D001E;
+}
+
+.rating {
+  color: white;
+  background-color: #5D001E;
+}

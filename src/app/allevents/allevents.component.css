@@ -1,0 +1,22 @@
+.tabs {
+  margin-top: 90px;
+}
+
+.tabs .tab a{
+  color:#5D001E !important;
+}
+
+tabs .tab a.active {
+	color: #5D001E;
+}
+
+.heading {
+  height: 60px;
+  color: #5D001E;
+  background: white;
+  position: absolute;
+  top: 64px;
+  left: 25%;
+  right: 25%;
+  margin-bottom: -20px !important;
+}
