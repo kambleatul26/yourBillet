@@ -1,11 +1,11 @@
 class Ticket {
-  type: string;
-  price: number;
+  price: Array<number>;
   description: string;
-  available: number;
+  available: Array<number>;
 }
 
 export interface EventData {
+  user: number;
   eventname: string;
   startdate: string;
   time: string;
@@ -13,7 +13,7 @@ export interface EventData {
   loc_lng: number;
   address: string;
   description: string;
-  category: Array<string>;
+  category: string;
   tags: Array<string>;
-  ticket: Array<Ticket>;
+  ticket: object;
 }

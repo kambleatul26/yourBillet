@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { BackendService } from '../backend.service';
 
 declare let $: any;
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/home/' + id]);
   }
 
-  constructor(private router: Router, private backendService: BackendService) {
+  constructor(private router: Router, private backendService: BackendService, private http: HttpClient) {
   }
 
   ngOnInit() {

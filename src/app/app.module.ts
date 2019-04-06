@@ -19,8 +19,6 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { EventsComponent } from './events/events.component';
 import { BookingsComponent } from './bookings/bookings.component';
 import { AlleventsComponent } from './allevents/allevents.component';
-import { StatisticsComponent } from './statistics/statistics.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
@@ -34,8 +32,6 @@ import { PaymentComponent } from './payment/payment.component';
     GooglePlaceDirective,
     BookingsComponent,
     AlleventsComponent,
-    StatisticsComponent,
-    UserProfileComponent,
     PaymentComponent,
   ],
   imports: [
@@ -46,20 +42,18 @@ import { PaymentComponent } from './payment/payment.component';
     MatStepperModule,
     GooglePlaceModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDA2z7JLHOv03Kp-OE6C2DZpW4bQ-2k4-0',
+      apiKey: 'AIzaSyBixkFnS98_Hoz236ZneiZyOVHVYPng9Tw',
       libraries: ['places']
     }),
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'home', component: HomeComponent},
-      {path: 'home/:eventName', component: PaymentComponent},
-      {path: 'dashboard/create', component: CreateEventComponent},
-      {path: 'dashboard/myevents', component: EventsComponent},
+      {path: 'home/:eventName', component: PaymentComponent, canActivate: [AuthGuard]},
+      {path: 'dashboard/create', component: CreateEventComponent, canActivate: [AuthGuard]},
+      {path: 'dashboard/myevents', component: EventsComponent, canActivate: [AuthGuard]},
       {path: 'dashboard/allevents', component: AlleventsComponent},
-      {path: 'dashboard/allevents/:eventName', component: PaymentComponent},
-      {path: 'dashboard/bookings', component: BookingsComponent},
-      {path: 'dashboard/statistics', component: StatisticsComponent},
-      {path: 'dashboard/myprofile', component: UserProfileComponent},
+      {path: 'dashboard/allevents/:eventName', component: PaymentComponent, canActivate: [AuthGuard]},
+      {path: 'dashboard/bookings', component: BookingsComponent, canActivate: [AuthGuard]},
       {path: '**', component: HomeComponent}
     ])
   ],

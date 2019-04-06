@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { EventData } from '../eventData';
+import { BackendService } from '../backend.service';
 
 import { MapsAPILoader } from '@agm/core';
 import { ViewChild, ElementRef, NgZone, } from '@angular/core';
@@ -18,7 +18,6 @@ declare let $: any;
 export class CreateEventComponent implements OnInit {
 
   isLinear = false;
-  eventData: EventData;
 
   date1;
   time;
@@ -42,10 +41,36 @@ export class CreateEventComponent implements OnInit {
       console.log(Form.value.description);
       console.log(Form.value.category);
       console.log(Form.value.tags);
-      console.log(Form.value.ticket_type);
-      console.log(Form.value.ticket_price);
       console.log(Form.value.ticket_desc);
-      console.log(Form.value.ticket_avbl);
+      const prices = [Form.value.ticket_price1, Form.value.ticket_price2, Form.value.ticket_price3];
+      console.log(prices);
+      const quantity = [Form.value.ticket_avbl1, Form.value.ticket_avbl2, Form.value.ticket_avbl3];
+      console.log(quantity);
+      const image = [Form.value.image1, Form.value.image2, Form.value.image3];
+      console.log(image);
+
+      const event = {
+          'name': Form.value.event_name,
+          'date': this.date1,
+          'lat': this.lat,
+          'long': this.lng,
+          'description': Form.value.description,
+          'venue': Form.value.addres,
+          'time': this.time,
+          'userId': Number(localStorage.getItem('uniqueID')),
+          'tags': Form.value.tags,
+          'category': Form.value.category,
+          'photos': image,
+          'ticket': {
+            'price': prices,
+            'quantity': quantity,
+            'description' : Form.value.ticket_desc,
+          },
+
+        };
+
+      this.backendService.regEvent(event);
+
     }
   }
 
@@ -58,7 +83,7 @@ export class CreateEventComponent implements OnInit {
 
   @ViewChild('places') places: GooglePlaceDirective;
   @ViewChild('search' ) public searchElement: ElementRef;
-  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {  }
+  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private backendService: BackendService) {  }
   public handleAddressChange(address: Address) {
       console.log(address.geometry.location.lng());
       console.log(address.geometry.location.lat());
@@ -69,7 +94,9 @@ export class CreateEventComponent implements OnInit {
   }
   ngOnInit() {
     $(document).ready( function() {
-      $('.datepicker').datepicker();
+      $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+      });
     });
 
     $(document).ready(function() {

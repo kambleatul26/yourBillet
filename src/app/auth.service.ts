@@ -11,13 +11,14 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   login(authData: Login): void {
-    this.http.post('https://1e57aa06.ngrok.io/user/login', authData)
+    this.http.post('https://ef31da43.ngrok.io/user/login', authData)
     .subscribe(res => {
       if (res['code'] === 2) {
         console.log(res);
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('user', authData.email);
         localStorage.setItem('token', res['token']);
+        localStorage.setItem('uniqueID', res['user']['id']);
         console.log('Login successful');
         this.router.navigate(['/home']);
       } else {
@@ -31,7 +32,7 @@ export class AuthService {
 
   signup(signData): boolean {
     let flag = false;
-    this.http.post('https://1e57aa06.ngrok.io/user/signup', signData)
+    this.http.post('https://ef31da43.ngrok.io/user/signup', signData)
     .subscribe(res => {
       if (res['code'] === 2) {
         console.log(res);
@@ -51,6 +52,7 @@ export class AuthService {
     localStorage.setItem('isLoggedIn', 'false');
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('uniqueID');
     window.location.reload();
   }
 

@@ -22,18 +22,16 @@
                   <!-- </div> -->
               </li>
 
-              <li><a routerLink="dashboard/create" *ngIf="loginFlag == 'false'">Create Event</a></li>
+              <li><a routerLink="dashboard/create" *ngIf="loginFlag == 'true'">Create Event</a></li>
               <li><a routerLink="dashboard/allevents">All Events</a></li>
               <li><a routerLink="login" *ngIf="loginFlag == 'false'">Login</a></li>
-              <a class='dropdown-trigger btn' *ngIf="loginFlag == 'false'" style="background-color: #5D001E" href='#'  data-target='dropdown2'><i class="material-icons prefix">arrow_drop_down_circle</i></a>
+              <a class='dropdown-trigger btn' *ngIf="loginFlag == 'true'" style="background-color: #5D001E" href='#'  data-target='dropdown2'><i class="material-icons prefix">arrow_drop_down_circle</i></a>
 
               <ul id='dropdown2' class='dropdown-content'>
                 <li><a routerLink="dashboard/bookings"><i class="material-icons prefix">snooze</i>Bookings</a></li>
                 <li class="divider" tabindex="-1"></li>
                 <li><a routerLink="dashboard/myevents"><i class="material-icons prefix">public</i>Organized Events</a></li>
-                <li><a routerLink="dashboard/statistics"><i class="material-icons prefix">euro_symbol</i>Billing</a></li>
                 <li class="divider" tabindex="-1"></li>
-                <li><a routerLink="dashboard/myprofile"><i class="material-icons prefix">person</i>My Profile</a></li>
                 <li><a (click)="onLogout()"><i class="material-icons prefix">exit_to_app</i>Logout</a></li>
               </ul>
           </ul>
