@@ -12,7 +12,7 @@ export class BookingsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    $(document).ready(function(){
+    $(document).ready(function() {
       $('.tabs').tabs();
     });
   }

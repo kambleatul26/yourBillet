@@ -21,6 +21,7 @@ import { BookingsComponent } from './bookings/bookings.component';
 import { AlleventsComponent } from './allevents/allevents.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     AlleventsComponent,
     StatisticsComponent,
     UserProfileComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,9 +52,11 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'home', component: HomeComponent},
+      {path: 'home/:eventName', component: PaymentComponent},
       {path: 'dashboard/create', component: CreateEventComponent},
       {path: 'dashboard/myevents', component: EventsComponent},
       {path: 'dashboard/allevents', component: AlleventsComponent},
+      {path: 'dashboard/allevents/:eventName', component: PaymentComponent},
       {path: 'dashboard/bookings', component: BookingsComponent},
       {path: 'dashboard/statistics', component: StatisticsComponent},
       {path: 'dashboard/myprofile', component: UserProfileComponent},
