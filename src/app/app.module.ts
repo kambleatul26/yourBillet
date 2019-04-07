@@ -48,12 +48,12 @@ import { PaymentComponent } from './payment/payment.component';
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'home', component: HomeComponent},
-      {path: 'home/:eventName', component: PaymentComponent, canActivate: [AuthGuard]},
-      {path: 'dashboard/create', component: CreateEventComponent, canActivate: [AuthGuard]},
-      {path: 'dashboard/myevents', component: EventsComponent, canActivate: [AuthGuard]},
+      {path: 'home/:eventName', component: PaymentComponent},
+      {path: 'dashboard/create', component: CreateEventComponent},
+      {path: 'dashboard/myevents', component: EventsComponent},
       {path: 'dashboard/allevents', component: AlleventsComponent},
-      {path: 'dashboard/allevents/:eventName', component: PaymentComponent, canActivate: [AuthGuard]},
-      {path: 'dashboard/bookings', component: BookingsComponent, canActivate: [AuthGuard]},
+      {path: 'dashboard/allevents/:eventName', component: PaymentComponent},
+      {path: 'dashboard/bookings', component: BookingsComponent},
       {path: '**', component: HomeComponent}
     ])
   ],

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { BackendService } from '../backend.service';
+import { HomeData } from '../homeData';
+import { Observable } from 'rxjs';
 
 declare let $: any;
 declare var carousel: Function;
@@ -13,13 +14,13 @@ declare var carousel: Function;
 })
 export class HomeComponent implements OnInit {
 
-  public homeEvent = [];
+  homeEvent$: Observable<HomeData[]>;
 
   payment(id) {
     this.router.navigate(['/home/' + id]);
   }
 
-  constructor(private router: Router, private backendService: BackendService, private http: HttpClient) {
+  constructor(private router: Router, private backendService: BackendService) {
   }
 
   ngOnInit() {
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit {
     }
     carousel();
 
-    this.backendService.homeData().subscribe(data => this.homeEvent = data);
+    this.homeEvent$ = this.backendService.homeData();
   }
 
 }
