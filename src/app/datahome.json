@@ -1,0 +1,16 @@
+[
+  {
+    "id": "0001",
+    "image": "https://i2.wp.com/www.indcareer.com/events/wp-content/uploads/2018/12/oculus_original-2018122101.jpg?fit=755%2C1024&ssl=1",
+    "name": "Codatron",
+    "description": "Random Text1",
+    "tags": ["cultural", "technical", "fun"]
+  },
+  {
+    "id": "0002",
+    "image": "https://pbs.twimg.com/media/Dw-S2rXVAAAnQ8m.jpg",
+    "name": "Oculus",
+    "description": "Random Text2",
+    "tags": ["cultural", "technical", "fun", "funn"]
+  }
+]
