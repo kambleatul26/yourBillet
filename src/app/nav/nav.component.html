@@ -22,10 +22,10 @@
                   <!-- </div> -->
               </li>
 
-              <li><a routerLink="dashboard/create" *ngIf="loginFlag == 'false'">Create Event</a></li>
+              <li><a routerLink="dashboard/create">Create Event</a></li>
               <li><a routerLink="dashboard/allevents">All Events</a></li>
-              <li><a routerLink="login" *ngIf="loginFlag == 'false'">Login</a></li>
-              <a class='dropdown-trigger btn' *ngIf="loginFlag == 'false'" style="background-color: #5D001E" href='#'  data-target='dropdown2'><i class="material-icons prefix">arrow_drop_down_circle</i></a>
+              <li><a routerLink="login">Login</a></li>
+              <a class='dropdown-trigger btn' style="background-color: #5D001E" href='#'  data-target='dropdown2'><i class="material-icons prefix">arrow_drop_down_circle</i></a>
 
               <ul id='dropdown2' class='dropdown-content'>
                 <li><a routerLink="dashboard/bookings"><i class="material-icons prefix">snooze</i>Bookings</a></li>

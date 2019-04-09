@@ -20,14 +20,78 @@
                           <th>Date</th>
                           <th>Venue</th>
                           <th>Rating</th>
+                          <th>Revenue</th>
+                          <th>Statistics</th>
                       </tr>
                     </thead>
 
                     <tbody>
-                      <tr>
-                        <td>Alvin</td>
-                        <td>Eclair</td>
-                        <td>$0.87</td>
+                      <tr *ngFor="let event of totalEvents | async">
+                        <td>{{event.name}}</td>
+                        <td>{{event.date}}</td>
+                        <td>{{event.venue}}</td>
+                        <td>{{event.rating}}</td>
+                        <td><a class="waves-effect waves-light btn modal-trigger rating" href="#{{100000 - event.id}}">PROFITS</a></td>
+                        <!-- Modal Structure -->
+                        <div id="{{100000 - event.id}}" class="modal">
+                          <button (click)="getReve(event.id)">GET DATA</button>
+                          <div class="modal-content">
+                            <h4>EVENT NAME</h4>
+                            <table>
+                                <thead>
+                                  <tr>
+                                      <th>Type</th>
+                                      <th>Quantity</th>
+                                  </tr>
+                                </thead>
+
+                                <tbody>
+                                  <tr *ngFor="let reve of eventRevenue | async">
+                                    <td>{{reve.type}}</td>
+                                    <td>{{reve.quantity}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <h5>TOTAL REVENUE = </h5>
+                          </div>
+                          <div class="modal-footer">
+                            <!-- <a href="#" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
+                          </div>
+                        </div>
+
+
+                        <td><a class="waves-effect waves-light btn modal-trigger rating" href="#{{event.id}}">Rate Event</a></td>
+                        <!-- Modal Structure -->
+                        <div id="{{event.id}}" class="modal">
+                          <div class="modal-content">
+                            <button (click)="getStats(event.id)">GET DATA</button>
+                            <h4>EVENT NAME</h4>
+                            <table>
+                                <thead>
+                                  <tr>
+                                      <th>Ticket ID</th>
+                                      <th>Email</th>
+                                      <th>Phone</th>
+                                      <th>Ticket Type</th>
+                                      <th>Quantity</th>
+                                  </tr>
+                                </thead>
+
+                                <tbody>
+                                  <tr *ngFor="let cus of orgEvent | async">
+                                    <td>{{cus.id}}</td>
+                                    <td>{{cus.email}}</td>
+                                    <td>{{cus.phone}}</td>
+                                    <td>{{cus.type}}</td>
+                                    <td>{{cus.quantity}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                          </div>
+                          <div class="modal-footer">
+                            <!-- <a href="#" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
+                          </div>
+                        </div>
                       </tr>
                     </tbody>
                   </table>

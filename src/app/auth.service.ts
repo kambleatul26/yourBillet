@@ -8,10 +8,12 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
+  url = 'https://cdf037fd.ngrok.io/';
+
   constructor(private http: HttpClient, private router: Router) { }
 
   login(authData: Login): void {
-    this.http.post('https://ef31da43.ngrok.io/user/login', authData)
+    this.http.post(this.url + 'user/login', authData)
     .subscribe(res => {
       if (res['code'] === 2) {
         console.log(res);
@@ -32,7 +34,7 @@ export class AuthService {
 
   signup(signData): boolean {
     let flag = false;
-    this.http.post('https://ef31da43.ngrok.io/user/signup', signData)
+    this.http.post(this.url + 'user/signup', signData)
     .subscribe(res => {
       if (res['code'] === 2) {
         console.log(res);
