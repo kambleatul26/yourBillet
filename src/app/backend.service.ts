@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
 })
 export class BackendService {
 
-  url = 'https://cdf037fd.ngrok.io/';
+  url = 'https://571eddca.ngrok.io/';
 
   regEvent(event) {
     this.http.post(this.url + 'event/create', event)
@@ -17,46 +17,28 @@ export class BackendService {
   }
 
   homeData() {
-    return this.http.get('http://www.mocky.io/v2/5ca9dc4f370000220c492edc')
-    .pipe(
-      tap(console.log)
-    );
+    return this.http.get('http://www.mocky.io/v2/5ca9dc4f370000220c492edc');
     // return this.http.get<HomeData[]>('/src/app/datahome.json');
   }
 
   allEvent() {
-    return this.http.get(this.url + 'event')
-    .pipe(
-      tap(console.log)
-    );
+    return this.http.get(this.url + 'event');
   }
 
   organizerCustomers(id) {
-    return this.http.get(this.url + 'event/stats/' + id)
-    .pipe(
-      tap(console.log)
-    );
+    return this.http.get(this.url + 'event/stats/' + id);
   }
 
   organizerEvents(uniqueId) {
-    return this.http.get(this.url + 'user/events/' + uniqueId)
-    .pipe(
-      tap(console.log)
-    );
+    return this.http.get(this.url + 'user/events/' + uniqueId);
   }
 
   revenue(uniqueId) {
-    return this.http.get(this.url + 'event/revenue/' + uniqueId)
-    .pipe(
-      tap(console.log)
-    );
+    return this.http.get(this.url + 'event/revenue/' + uniqueId);
   }
 
   bookings(uniqueId) {
-    return this.http.get(this.url + 'ticket/user/' + uniqueId)
-    .pipe(
-      tap(console.log)
-    );
+    return this.http.get(this.url + 'ticket/user/' + uniqueId);
   }
 
   rate(id, num) {
@@ -69,6 +51,10 @@ export class BackendService {
     });
   }
 
+  tmp() {
+    return this.http.get('http://www.mocky.io/v2/5cad8fff2f0000c82b3a95e1');
+  }
+
   constructor(private http: HttpClient) { }
 }
 
@@ -78,6 +64,8 @@ export class BackendService {
 TICKET PAGE (options)
 PAYMENT redirect to TICKETs with success msg
 MODAL ISSUE
+
+
 RATE and INVOICE
 POPULAR EVENTS HOME
 

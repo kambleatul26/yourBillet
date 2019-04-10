@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { BackendService } from '../backend.service';
-import { BookingData } from '../bookingData';
-import { Observable } from 'rxjs';
 
 declare let $: any;
 
@@ -13,8 +11,7 @@ declare let $: any;
 })
 export class BookingsComponent implements OnInit {
 
-  bookings: Observable<BookingData[]>;
-  QR: string;
+  bookings;
 
   constructor(private backendService: BackendService) { }
 
@@ -29,14 +26,15 @@ export class BookingsComponent implements OnInit {
 
   ngOnInit() {
     $(document).ready(function() {
+      $('.tabs').tabs();
+    });
+    $(document).ready(function() {
       $('.modal').modal();
     });
 
-    $(document).ready(function() {
-      $('.tabs').tabs();
+    this.backendService.bookings(localStorage.getItem('uniqueID')).subscribe(res => {
+      this.bookings = res;
     });
-
-    this.bookings = this.backendService.bookings(localStorage.getItem('uniqueID'));
   }
 
 }

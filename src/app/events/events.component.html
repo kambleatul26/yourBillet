@@ -26,7 +26,7 @@
                     </thead>
 
                     <tbody>
-                      <tr *ngFor="let event of totalEvents | async">
+                      <tr *ngFor="let event of totalEvents">
                         <td>{{event.name}}</td>
                         <td>{{event.date}}</td>
                         <td>{{event.venue}}</td>
@@ -36,7 +36,7 @@
                         <div id="{{100000 - event.id}}" class="modal">
                           <button (click)="getReve(event.id)">GET DATA</button>
                           <div class="modal-content">
-                            <h4>EVENT NAME</h4>
+                            <h4>{{event.name}}</h4>
                             <table>
                                 <thead>
                                   <tr>
@@ -45,27 +45,27 @@
                                   </tr>
                                 </thead>
 
-                                <tbody>
-                                  <tr *ngFor="let reve of eventRevenue | async">
+                                <tbody *ngIf="eventRevenue">
+                                  <tr *ngFor="let reve of eventRevenue['stats']">
                                     <td>{{reve.type}}</td>
                                     <td>{{reve.quantity}}</td>
                                   </tr>
                                 </tbody>
                               </table>
-                              <h5>TOTAL REVENUE = </h5>
+                              <h5 *ngIf="eventRevenue">TOTAL REVENUE = {{eventRevenue['total']}}</h5>
                           </div>
                           <div class="modal-footer">
                             <!-- <a href="#" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
                           </div>
                         </div>
-
-
                         <td><a class="waves-effect waves-light btn modal-trigger rating" href="#{{event.id}}">Rate Event</a></td>
+
+
                         <!-- Modal Structure -->
                         <div id="{{event.id}}" class="modal">
                           <div class="modal-content">
                             <button (click)="getStats(event.id)">GET DATA</button>
-                            <h4>EVENT NAME</h4>
+                            <h4>{{event.name}}</h4>
                             <table>
                                 <thead>
                                   <tr>
@@ -78,7 +78,7 @@
                                 </thead>
 
                                 <tbody>
-                                  <tr *ngFor="let cus of orgEvent | async">
+                                  <tr *ngFor="let cus of orgEvent">
                                     <td>{{cus.id}}</td>
                                     <td>{{cus.email}}</td>
                                     <td>{{cus.phone}}</td>

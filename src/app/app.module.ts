@@ -6,6 +6,7 @@ import { AuthGuard } from './auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AgmCoreModule } from '@agm/core';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
@@ -40,9 +41,10 @@ import { PaymentComponent } from './payment/payment.component';
     FormsModule,
     HttpClientModule,
     MatStepperModule,
+    MatDialogModule,
     GooglePlaceModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBixkFnS98_Hoz236ZneiZyOVHVYPng9Tw',
+      apiKey: 'AIzaSyB8VbEqA9kOpcsMp1uXEarVf5Eh8YSdxgM',
       libraries: ['places']
     }),
     RouterModule.forRoot([

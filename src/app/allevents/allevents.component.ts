@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BackendService } from '../backend.service';
-import { HomeData } from '../homeData';
-import { Observable } from 'rxjs';
 
 declare let $: any;
 
@@ -13,7 +11,7 @@ declare let $: any;
 })
 export class AlleventsComponent implements OnInit {
 
-  allEvent$: Observable<HomeData[]>;
+  allEvent$;
 
   constructor(private router: Router, private backendService: BackendService) { }
 
@@ -22,11 +20,13 @@ export class AlleventsComponent implements OnInit {
   }
 
   ngOnInit() {
-    $(document).ready(function(){
+    $(document).ready(function() {
       $('.tabs').tabs();
     });
 
-    this.allEvent$ = this.backendService.allEvent();
+    this.backendService.allEvent().subscribe(res => {
+      this.allEvent$ = res;
+    });
   }
 
 

@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../backend.service';
-import { OrgCusData } from '../orgCusData';
-import { OrgTotalEvents } from '../orgTotalEvents';
-import { EventRevenueData } from '../eventRevenueData';
-import { Observable } from 'rxjs';
 
 declare let $: any;
 
@@ -14,9 +10,9 @@ declare let $: any;
 })
 export class EventsComponent implements OnInit {
 
-  totalEvents: Observable<OrgTotalEvents[]>;
-  orgEvent: Observable<OrgCusData[]>;
-  eventRevenue: Observable<EventRevenueData[]>;
+  totalEvents;
+  orgEvent;
+  eventRevenue;
 
   constructor(private backendService: BackendService) { }
 
@@ -29,15 +25,22 @@ export class EventsComponent implements OnInit {
       $('.tabs').tabs();
     });
 
-    this.totalEvents = this.backendService.organizerEvents(localStorage.getItem('uniqueID'));
+    this.backendService.organizerEvents(localStorage.getItem('uniqueID')).subscribe(res => {
+      this.totalEvents = res;
+    });
   }
 
   getStats(id) {
-    this.orgEvent = this.backendService.organizerCustomers(id);
+    this.backendService.organizerCustomers(id).subscribe(res => {
+      this.orgEvent = res;
+    });
   }
 
   getReve(id) {
-    this.eventRevenue = this.backendService.revenue(id);
+    this.backendService.revenue(id).subscribe(res => {
+      this.eventRevenue = res;
+      console.log(this.eventRevenue);
+    });
   }
 
 }

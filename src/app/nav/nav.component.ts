@@ -31,11 +31,11 @@ export class NavComponent implements OnInit {
     this.loginFlag = localStorage.getItem('isLoggedIn');
     // console.log(this.loginFlag);
     if (this.loginFlag === 'true') {
-      this.http.post('https://1e57aa06.ngrok.io/user/verify', 'token')
-      .subscribe(res => {
-        console.log(res);
-        // if no token then redirect to login
-      });
+      // this.http.post('https://1e57aa06.ngrok.io/user/verify', 'token')
+      // .subscribe(res => {
+      //   console.log(res);
+      //   // if no token then redirect to login
+      // });
     }
   }
 

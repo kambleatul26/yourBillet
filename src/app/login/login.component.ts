@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    $(document).ready(function(){
+    $(document).ready(function() {
       $('.tabs').tabs();
     });
   }
