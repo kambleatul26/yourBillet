@@ -12,28 +12,55 @@ declare let $: any;
 export class BookingsComponent implements OnInit {
 
   bookings;
+  eventId;
+  eventName;
+  url;
 
-  constructor(private backendService: BackendService) { }
+  constructor(private backendService: BackendService) {
+    $(document).ready(function() {
+      $('.modal').modal({
+          dismissible: true, // Modal can be dismissed by clicking outside of the modal
+          onOpenEnd: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+          //  alert('Ready');
+            // console.log(modal, trigger);
+          },
+          onCloseEnd: function() { // Callback for Modal close
+            // alert('Closed');
+          }
+        }
+      );
+    });
+  }
 
-  rate(Form: NgForm, eventId) {
+  qrCode(eid, ename, url) {
+    this.eventId = eid;
+    this.eventName = ename;
+    this.url = url;
+  }
+
+  rating(eid, ename) {
+    this.eventId = eid;
+    this.eventName = ename;
+  }
+
+  rate(Form: NgForm) {
     if (Form.invalid) {
       return;
     } else {
       console.log(Form.value.rate);
+      console.log(this.eventId);
     }
-    this.backendService.rate(eventId, Form.value.rate);
+    this.backendService.rate(this.eventId, Form.value.rate);
   }
 
   ngOnInit() {
     $(document).ready(function() {
       $('.tabs').tabs();
     });
-    $(document).ready(function() {
-      $('.modal').modal();
-    });
 
     this.backendService.bookings(localStorage.getItem('uniqueID')).subscribe(res => {
       this.bookings = res;
+      console.log(res);
     });
   }
 

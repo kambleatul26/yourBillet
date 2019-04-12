@@ -44,7 +44,7 @@ import { PaymentComponent } from './payment/payment.component';
     MatDialogModule,
     GooglePlaceModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB8VbEqA9kOpcsMp1uXEarVf5Eh8YSdxgM',
+      apiKey: 'AIzaSyAjLyjAFCmazTPa3OB6zaB6WsiExPhxu_8',
       libraries: ['places']
     }),
     RouterModule.forRoot([

@@ -20,6 +20,19 @@ export class HomeComponent implements OnInit {
   }
 
   constructor(private router: Router, private backendService: BackendService) {
+    $(document).ready(function() {
+      $('.modal').modal({
+          dismissible: true, // Modal can be dismissed by clicking outside of the modal
+          onOpenEnd: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+           alert('Ready');
+            console.log(modal, trigger);
+          },
+          onCloseEnd: function() { // Callback for Modal close
+            alert('Closed');
+          }
+        }
+      );
+    });
   }
 
   ngOnInit() {

@@ -38,33 +38,8 @@
                           <p *ngSwitchCase="2">ECONOMY</p>
                           <p *ngSwitchCase="3">GOLD</p>
                         </td>
-                        <td><a class="waves-effect waves-light btn modal-trigger rating" href="#{{event.id}}">Rate Event</a></td>
-                        <!-- Modal Structure -->
-                        <div id="{{event.id}}" class="modal">
-                          <form #ratingForm="ngForm">
-                          <div class="modal-content">
-                            <h4>EVENT NAME</h4>
-                                <div class="rate">
-                                    <input type="radio" id="star5" name="rate" value="5" ngModel/>
-                                    <label for="star5" title="text">5 stars</label>
-                                    <input type="radio" id="star4" name="rate" value="4" ngModel />
-                                    <label for="star4" title="text">4 stars</label>
-                                    <input type="radio" id="star3" name="rate" value="3" ngModel />
-                                    <label for="star3" title="text">3 stars</label>
-                                    <input type="radio" id="star2" name="rate" value="2" ngModel />
-                                    <label for="star2" title="text">2 stars</label>
-                                    <input type="radio" id="star1" name="rate" value="1" ngModel />
-                                    <label for="star1" title="text">1 star</label>
-                                </div>
-                                <h6>Mail us at xyz@yourbillet.com & +91 7777777777 for any help</h6>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="submit" (click)="rate(ratingForm, event.id)" class="btn waves-effect col s12" style="background-color: #5D001E">SUBMIT RATING</button>
-                                <!-- <a href="#" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
-                              </div>
-                            </form>
-                        </div>
-                        <td><img src="{{event.url}}" alt=""></td>
+                        <td><button data-target="Rating" (click)="rating(event.id, event.name)" class="waves-effect btn modal-trigger rating">RATE EVENT</button></td>
+                        <td><button data-target="QR" (click)="qrCode(event.id, event.name, event.url)" class="waves-effect btn modal-trigger rating">GET QR CODE</button></td>
                         <td><button class="btn-small rating">INVOICE</button></td>
                       </tr>
                     </tbody>
@@ -98,4 +73,44 @@
             </div>
           </div>
     </div>
+</div>
+
+
+
+<div id="Rating" class="modal">
+  <form #ratingForm="ngForm">
+  <div class="modal-content">
+    <h4>{{eventName}}</h4>
+        <div class="rate">
+            <input type="radio" id="star5" name="rate" value="5" ngModel/>
+            <label for="star5" title="text">5 stars</label>
+            <input type="radio" id="star4" name="rate" value="4" ngModel />
+            <label for="star4" title="text">4 stars</label>
+            <input type="radio" id="star3" name="rate" value="3" ngModel />
+            <label for="star3" title="text">3 stars</label>
+            <input type="radio" id="star2" name="rate" value="2" ngModel />
+            <label for="star2" title="text">2 stars</label>
+            <input type="radio" id="star1" name="rate" value="1" ngModel />
+            <label for="star1" title="text">1 star</label>
+        </div>
+        <h6>Mail us at xyz@yourbillet.com & +91 7777777777 for any help</h6>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" (click)="rate(ratingForm)" class="btn waves-effect col s12" style="background-color: #5D001E">SUBMIT RATING</button>
+        <!-- <a href="#" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
+      </div>
+    </form>
+</div>
+
+
+<div id="QR" class="modal">
+  <div class="modal-content">
+    <h4 class="center">{{eventName}}</h4>
+        <div style="margin: auto">
+          <img class="materialboxed" src="{{url}}">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!-- <a href="#" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
+      </div>
 </div>

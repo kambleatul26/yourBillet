@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
 
-  url = 'https://571eddca.ngrok.io/';
+  url = 'https://40801e14.ngrok.io/';
 
   regEvent(event) {
     this.http.post(this.url + 'event/create', event)
@@ -41,10 +40,22 @@ export class BackendService {
     return this.http.get(this.url + 'ticket/user/' + uniqueId);
   }
 
+  bookTicket(type, quantity, eventId) {
+    this.http.post(this.url + 'ticket/buy', {
+      'eventId': Number(eventId),
+      'userId': localStorage.getItem('uniqueID'),
+      'type': Number(type),
+      'quantity': quantity
+    })
+    .subscribe(res => {
+      console.log(res);
+    });
+  }
+
   rate(id, num) {
-    this.http.post(this.url + 'user/events/', {
-      'id': id,
-      'num': num
+    this.http.post(this.url + 'event/rating', {
+      'eventId': id,
+      'rating': Number(num)
     })
     .subscribe(res => {
       console.log(res);
@@ -61,14 +72,15 @@ export class BackendService {
 
 /*
 
-TICKET PAGE (options)
-PAYMENT redirect to TICKETs with success msg
+PAYMENT redirect to TICKETs with success msg (BUFFER)
+DATA COLLAPSE AFTER MODAL CLOSES
 MODAL ISSUE
+FOOTER
+POSTER
+ORGANIZED RATINGS
 
 
-RATE and INVOICE
-POPULAR EVENTS HOME
-
-STATS in MYEVENTS
+SEARCH
+POPULAR EVENTS HOME / ACTIVE & PAST
 
 */

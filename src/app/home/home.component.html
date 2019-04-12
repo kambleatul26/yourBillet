@@ -49,7 +49,7 @@
               <div class="card-reveal">
                   <span class="card-title grey-text text-darken-4">{{event.name}}<i class="material-icons right">close</i></span>
                   <p>{{event.description}}</p>
-                  <div class="center"><a class="btn" (click)="payment( event.id )">Book Tickets</a></div>
+                  <div class="center"><a class="btn" (click)="payment( event.id, event.name )">Book Tickets</a></div>
                   <h5 class="center" style="padding-top: 10%">TAGS</h5>
                   <ul>
                       <li *ngFor='let t of event.tags'>#{{t}}</li>

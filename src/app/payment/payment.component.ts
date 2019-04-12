@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { BackendService } from '../backend.service';
 
 declare let $: any;
 
@@ -23,7 +25,18 @@ export class PaymentComponent implements OnInit {
     console.log(this.divFlag);
   }
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  tickets(Form: NgForm) {
+    if (Form.invalid) {
+      return;
+    } else {
+      console.log(Form.value.group1);
+      console.log(Form.value.quantity);
+      console.log(this.param);
+      this.backendService.bookTicket(Form.value.group1, Form.value.quantity, this.param);
+    }
+  }
+
+  constructor(private activatedRoute: ActivatedRoute, private backendService: BackendService) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params => {

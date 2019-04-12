@@ -1,34 +1,34 @@
 <div class="z-depth-3 ticket">
   <h2 class="center">EVENT NAME</h2><br>
   <h4 class="center">SELECT TICKET TYPE</h4>
-  <form action="#">
+  <form #ticketForm = "ngForm">
     <div class="myclass">
       <div>
         <p>
           <label>
-            <input name="group1" (click)="func()" value="Type 1" type="radio" />
+            <input name="group1" (click)="func()" value="1" type="radio" ngModel />
             <span>Type 1</span>
           </label>
         </p>
         <p>
           <label>
-            <input name="group1" (click)="func()" value="Type 2" type="radio" />
+            <input name="group1" (click)="func()" value="2" type="radio" ngModel />
             <span>Type 2</span>
           </label>
         </p>
         <p>
           <label>
-            <input name="group1" (click)="func()" value="Type 3" type="radio"  />
+            <input name="group1" (click)="func()" value="3" type="radio" ngModel  />
             <span>Type 3</span>
           </label>
         </p>
       </div>
       <div *ngIf="divFlag == true">
         <h4>Select Number of tickets</h4>
-        <input type="number" name="quantity">
+        <input type="number" name="quantity" ngModel>
         <label for="quantity">Number of Tickets</label>
       </div>
     </div>
-    <button type="submit" class="btn" style="margin-left: 40%">BOOK</button>
+    <button type="submit" (click)="tickets(ticketForm)" class="btn" style="margin-left: 40%">BOOK</button>
   </form>
 </div>
