@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     } else {
       const authData = {email: Form.value.username, password: Form.value.password};
       this.authService.login(authData);
-      if (localStorage.getItem('isLoggedin') === 'true') {
+      if (localStorage.getItem('isLoggedin') == 'true') {
         M.toast({html: 'LOGIN SUCCESS..!'});
       } else {
         M.toast({html: 'FALSE CREDENTIALS, Please try again.'});
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     } else {
       const signData = {name: Form.value.name, email: Form.value.username1, password: Form.value.password1, phone: Form.value.phone};
       const signFlag = this.authService.signup(signData);
-      if (signFlag === true) {
+      if (signFlag == true) {
         M.toast({html: 'SIGNED UP..!'});
       } else {
         M.toast({html: 'SOMETHING WRONG, Please try again.'});

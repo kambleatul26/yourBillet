@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
 import { BackendService } from '../backend.service';
+import { InteractionService } from '../interaction.service';
+
+import * as M from 'materialize-css/dist/js/materialize';
 
 declare let $: any;
 
@@ -13,7 +15,15 @@ declare let $: any;
 export class PaymentComponent implements OnInit {
 
   param: string;
+  eventName: string;
   divFlag = false;
+  prices;
+  type;
+  quantity;
+
+  getRandomPrice(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
 
   func() {
     if ($('input[name=group1]:checked').length > 0) {
@@ -25,23 +35,47 @@ export class PaymentComponent implements OnInit {
     console.log(this.divFlag);
   }
 
-  tickets(Form: NgForm) {
-    if (Form.invalid) {
-      return;
-    } else {
-      console.log(Form.value.group1);
-      console.log(Form.value.quantity);
-      console.log(this.param);
-      this.backendService.bookTicket(Form.value.group1, Form.value.quantity, this.param);
-    }
+  tickets(typeNum) {
+    console.log(typeNum);
+    console.log(this.quantity);
+    this.backendService.bookTicket(typeNum, this.quantity, this.param);
   }
 
-  constructor(private activatedRoute: ActivatedRoute, private backendService: BackendService) { }
+  toastFunc1() {
+    M.toast({html: '23 Tickets Available', classes: 'rounded', outDuration: '1000'});
+  }
+
+  toastFunc2() {
+    M.toast({html: '743 Tickets Available', classes: 'rounded', outDuration: '1000'});
+  }
+
+  toastFunc3() {
+    M.toast({html: '5 Tickets Available', classes: 'rounded', outDuration: '1000'});
+  }
+
+  constructor(private activatedRoute: ActivatedRoute, private backendService: BackendService,
+              private interactionService: InteractionService) { }
 
   ngOnInit() {
+    $(document).ready(function() {
+      $('.tap-target').tapTarget();
+    });
+
+    $(document).ready(function(){
+      $('.collapsible').collapsible();
+    });
+
+    this.interactionService.eventName$
+    .subscribe(ename => {
+      this.eventName = ename;
+      console.log(this.eventName);
+    });
     this.activatedRoute.paramMap.subscribe(params => {
       this.param = params.get('eventName');
       console.log(params.get('eventName'));
+    });
+    this.backendService.ticketPrice(this.param).subscribe(res => {
+      this.prices = res;
     });
   }
 

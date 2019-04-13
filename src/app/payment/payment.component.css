@@ -1,11 +1,28 @@
 .ticket {
   padding: 2%;
-  margin: 5%;
+  margin: 5% 10%;
   width: 80%;
+  background: #E3E2DF;
 }
 
 .myclass {
   margin: 5% 20%;
   display: flex;
   justify-content: space-between;
+}
+
+.book {
+  width: 200%;
+  background: #5D001E;
+}
+
+.head {
+  height: 60px;
+  color: #5D001E;
+}
+
+.align {
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-evenly;
 }

@@ -15,7 +15,6 @@ export class AuthService {
   login(authData: Login): void {
     this.http.post(this.url + 'user/login', authData)
     .subscribe(res => {
-      if (res['code'] === 2) {
         console.log(res);
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('user', authData.email);
@@ -23,9 +22,7 @@ export class AuthService {
         localStorage.setItem('uniqueID', res['user']['id']);
         console.log('Login successful');
         this.router.navigate(['/home']);
-      } else {
-        console.log('Not Successful');
-      }
+        window.location.reload();
     }, err => {
       console.log('Not Successful');
       console.log(err);
@@ -36,17 +33,15 @@ export class AuthService {
     let flag = false;
     this.http.post(this.url + 'user/signup', signData)
     .subscribe(res => {
-      if (res['code'] === 2) {
         console.log(res);
         console.log('Signup successful');
         flag = true;
-      } else {
-        console.log('Not Successful');
-      }
     }, err => {
+      flag = false;
       console.log('Not Successful');
       console.log(err);
     });
+    console.log(flag);
     return flag;
   }
 

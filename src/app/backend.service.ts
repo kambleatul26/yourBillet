@@ -52,6 +52,10 @@ export class BackendService {
     });
   }
 
+  ticketPrice(eventid) {
+    return this.http.get(this.url + '/' + eventid);
+  }
+
   rate(id, num) {
     this.http.post(this.url + 'event/rating', {
       'eventId': id,
@@ -62,22 +66,18 @@ export class BackendService {
     });
   }
 
-  tmp() {
-    return this.http.get('http://www.mocky.io/v2/5cad8fff2f0000c82b3a95e1');
-  }
-
   constructor(private http: HttpClient) { }
 }
 
 
 /*
 
+PAYMENT event name
 PAYMENT redirect to TICKETs with success msg (BUFFER)
-DATA COLLAPSE AFTER MODAL CLOSES
-MODAL ISSUE
 FOOTER
 POSTER
 ORGANIZED RATINGS
+STYLING EVERYTHING
 
 
 SEARCH
