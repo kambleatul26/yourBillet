@@ -5,7 +5,7 @@
             <!-- random image -->
             <div class="caption center-align">
                 <h5 class="light grey-text text-lighten-3">Secure and Quick Ticketing with YourBillet.</h5>
-                <h3 style="background-color: #5D001E" class="btn">REGISTER YOUR EVENT NOW</h3>
+                <h3 style="background-color: #5D001E" routerLink="/dashboard/create" class="btn">REGISTER YOUR EVENT NOW</h3>
             </div>
         </li>
         <li>
@@ -13,7 +13,7 @@
             <!-- random image -->
             <div class="caption center-align">
                 <h5 style="color: #5D001E">Secure and Quick Ticketing with YourBillet.</h5>
-                <h3 style="background-color: #5D001E" class="btn">REGISTER YOUR EVENT NOW</h3>
+                <h3 style="background-color: #5D001E" routerLink="/dashboard/create" class="btn">REGISTER YOUR EVENT NOW</h3>
             </div>
         </li>
         <li>
@@ -21,7 +21,7 @@
             <!-- random image -->
             <div class="caption center-align">
                 <h5 style="color: #5D001E">Secure and Quick Ticketing with YourBillet.</h5>
-                <h3 style="background-color: #5D001E" class="btn">REGISTER YOUR EVENT NOW</h3>
+                <h3 style="background-color: #5D001E" routerLink="/dashboard/create" class="btn">REGISTER YOUR EVENT NOW</h3>
             </div>
         </li>
     </ul>
@@ -36,7 +36,7 @@
 </div>
 <div class="popular">
     <h5 class="center">POPULAR EVENTS NOW</h5>
-    <div class="container">
+    <div class="container hide-on-small-only">
         <div class="row">
           <div class="col s4" *ngFor='let event of homeEvent$'>
             <div class="card hoverable">
@@ -57,21 +57,27 @@
               </div>
             </div>
           </div>
-            <!-- <div class="col s4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="https://i2.wp.com/www.indcareer.com/events/wp-content/uploads/2018/12/oculus_original-2018122101.jpg?fit=755%2C1024&ssl=1">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                        <div class="center"><a class="btn" (click)="payment()">Book Tickets</a></div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
+    <div class="container show-on-small hide-on-med-and-up">
+        <div class="row">
+          <div class="col s6" *ngFor='let event of homeEvent$'>
+            <div class="card hoverable">
+              <div class="card-image waves-effect waves-block waves-light">
+                  <img class="activator" src="{{event.image}}">
+              </div>
+              <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">{{event.name}}<i class="material-icons right">more_vert</i></span>
+              </div>
+              <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">{{event.name}}<i class="material-icons right">close</i></span>
+                  <p>{{event.description}}</p>
+                  <div class="center"><a class="btn" (click)="payment( event.id, event.name )">Book Tickets</a></div>
+                  <h5 class="center" style="padding-top: 10%">TAGS</h5>
+                  <ul>
+                      <li *ngFor='let t of event.tags'>#{{t}}</li>
+                  </ul>
+              </div>
+            </div>
+          </div>
 </div>

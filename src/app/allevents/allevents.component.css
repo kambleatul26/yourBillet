@@ -20,3 +20,8 @@ tabs .tab a.active {
   right: 25%;
   margin-bottom: -20px !important;
 }
+
+.mob {
+  margin-top: 20%;
+  color: #5D001E;
+}

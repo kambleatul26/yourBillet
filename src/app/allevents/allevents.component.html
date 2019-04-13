@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container hide-on-small-only">
     <div class="row">
         <ul class="tabs z-depth-2">
             <li class="tab col s2"><a href="#test1">Technical</a></li>
@@ -138,4 +138,153 @@
             </div>
         </div>
     </div>
+</div>
+<div class="container show-on-small hide-on-med-and-up">
+  <ul class="collapsible popout mob">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">developer_mode</i>Technical</div>
+      <div class="collapsible-body">
+          <h4 class="center">TECHNICAL EVENTS IN INDIA</h4>
+          <div class="row">
+              <div *ngFor='let event of allEvent$'>
+                  <div class="col s6" *ngIf='event.category == "technical"'>
+                      <div class="card hoverable">
+                          <div class="card-image waves-effect waves-block waves-light">
+                              <img class="activator" src="{{event.image}}">
+                          </div>
+                          <div class="card-content">
+                              <span class="card-title activator grey-text text-darken-4">{{event.name}}<i class="material-icons right">more_vert</i></span>
+                          </div>
+                          <div class="card-reveal">
+                              <span class="card-title grey-text text-darken-4">{{event.name}}<i class="material-icons right">close</i></span>
+                              <p>{{event.description}}</p>
+                              <div class="center"><a class="btn" (click)="payment( event.id )">Book Tickets</a></div>
+                              <h5 class="center" style="padding-top: 10%">TAGS</h5>
+                              <ul>
+                                  <li *ngFor='let t of event.tags'>#{{t}}</li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">next_week</i>Coorporate</div>
+      <div class="collapsible-body">
+        <h4 class="center">COORPORATE EVENTS</h4>
+        <div class="row">
+            <div *ngFor='let event of allEvent$'>
+                <div class="col s6" *ngIf='event.category == "coorporate"'>
+                    <div class="card hoverable">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{{event.image}}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">{{event.name}}<i class="material-icons right">more_vert</i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">{{event.name}}<i class="material-icons right">close</i></span>
+                            <p>{{event.description}}</p>
+                            <div class="center"><a class="btn" (click)="payment( event.id )">Book Tickets</a></div>
+                            <h5 class="center" style="padding-top: 10%">TAGS</h5>
+                            <ul>
+                                <li *ngFor='let t of event.tags'>#{{t}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">library_music</i>Cultural</div>
+      <div class="collapsible-body">
+        <h4 class="center">CULTURAL EVENTS</h4>
+        <div class="row">
+            <div *ngFor='let event of allEvent$'>
+                <div class="col s6" *ngIf='event.category == "cultural"'>
+                    <div class="card hoverable">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{{event.image}}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">{{event.name}}<i class="material-icons right">more_vert</i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">{{event.name}}<i class="material-icons right">close</i></span>
+                            <p>{{event.description}}</p>
+                            <div class="center"><a class="btn" (click)="payment( event.id )">Book Tickets</a></div>
+                            <h5 class="center" style="padding-top: 10%">TAGS</h5>
+                            <ul>
+                                <li *ngFor='let t of event.tags'>#{{t}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </li>
+    <li>
+        <div class="collapsible-header"><i class="material-icons">directions_bike</i>Sports</div>
+        <div class="collapsible-body">
+            <h4 class="center">SPORTS EVENTS</h4>
+            <div class="row">
+                <div *ngFor='let event of allEvent$'>
+                    <div class="col s6" *ngIf='event.category == "sports"'>
+                        <div class="card hoverable">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="{{event.image}}">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">{{event.name}}<i class="material-icons right">more_vert</i></span>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">{{event.name}}<i class="material-icons right">close</i></span>
+                                <p>{{event.description}}</p>
+                                <div class="center"><a class="btn" (click)="payment( event.id )">Book Tickets</a></div>
+                                <h5 class="center" style="padding-top: 10%">TAGS</h5>
+                                <ul>
+                                    <li *ngFor='let t of event.tags'>#{{t}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">gamepad</i>Fun</div>
+      <div class="collapsible-body">
+        <h4 class="center">FUN EVENTS</h4>
+        <div class="row">
+            <div *ngFor='let event of allEvent$'>
+                <div class="col s6" *ngIf='event.category == "fun"'>
+                    <div class="card hoverable">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="{{event.image}}">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">{{event.name}}<i class="material-icons right">more_vert</i></span>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">{{event.name}}<i class="material-icons right">close</i></span>
+                            <p>{{event.description}}</p>
+                            <div class="center"><a class="btn" (click)="payment( event.id )">Book Tickets</a></div>
+                            <h5 class="center" style="padding-top: 10%">TAGS</h5>
+                            <ul>
+                                <li *ngFor='let t of event.tags'>#{{t}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </li>
+  </ul>
 </div>
