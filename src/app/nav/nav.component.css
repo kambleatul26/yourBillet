@@ -9,3 +9,10 @@ nav {
 .dropdown-content li>a {
   color: #5D001E !important;
 }
+
+nav .sidenav {
+  padding-top: 50%;
+  padding-left: 15%;
+  width: 350px;
+  background: #E3E2DF;
+}

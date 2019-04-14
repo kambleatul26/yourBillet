@@ -3,10 +3,6 @@ import { NgForm } from '@angular/forms';
 import { BackendService } from '../backend.service';
 
 import { MapsAPILoader } from '@agm/core';
-import { ViewChild, ElementRef, NgZone, } from '@angular/core';
-
-import { GooglePlaceDirective } from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
-import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 declare let $: any;
 
@@ -22,11 +18,8 @@ export class CreateEventComponent implements OnInit {
   date1;
   time;
 
-  // lat = 19.2781;
-  // lng = 72.8668;
-
-  lat = -33.785809;
-  lng = 151.121195;
+  lat = 19.2781;
+  lng = 72.8668;
 
   eventFunc(Form: NgForm) {
     if (Form.invalid) {
@@ -81,17 +74,8 @@ export class CreateEventComponent implements OnInit {
     this.lng = $event.coords.lng;
   }
 
-  @ViewChild('places') places: GooglePlaceDirective;
-  @ViewChild('search' ) public searchElement: ElementRef;
-  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private backendService: BackendService) {  }
-  public handleAddressChange(address: Address) {
-      console.log(address.geometry.location.lng());
-      console.log(address.geometry.location.lat());
-      console.log(address.geometry.location.toJSON());
-      console.log(address.geometry.viewport.getNorthEast());
-      this.lng = address.geometry.location.lng();
-      this.lat  = address.geometry.location.lat();
-  }
+  constructor(private mapsAPILoader: MapsAPILoader, private backendService: BackendService) {  }
+
   ngOnInit() {
     $(document).ready( function() {
       $('.datepicker').datepicker({

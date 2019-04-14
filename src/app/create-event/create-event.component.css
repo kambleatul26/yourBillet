@@ -4,6 +4,7 @@ a, button {
 
 .createEvent {
   background-color: #fce4ec;
+  padding-bottom: 40px;
 }
 
 .form-content {
@@ -13,4 +14,8 @@ a, button {
 agm-map {
   margin: 10%;
   height: 500px;
+}
+
+mat-vertical-stepper {
+  margin-top: 35px !important;
 }

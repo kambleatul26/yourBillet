@@ -24,6 +24,10 @@ export class AlleventsComponent implements OnInit {
       $('.tabs').tabs();
     });
 
+    $(document).ready(function(){
+      $('.collapsible').collapsible();
+    });
+
     this.backendService.allEvent().subscribe(res => {
       this.allEvent$ = res;
     });

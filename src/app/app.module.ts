@@ -9,8 +9,6 @@ import { MatStepperModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { AgmCoreModule } from '@agm/core';
-import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
-import { GooglePlaceDirective } from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -21,6 +19,7 @@ import { EventsComponent } from './events/events.component';
 import { BookingsComponent } from './bookings/bookings.component';
 import { AlleventsComponent } from './allevents/allevents.component';
 import { PaymentComponent } from './payment/payment.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -30,10 +29,10 @@ import { PaymentComponent } from './payment/payment.component';
     HomeComponent,
     CreateEventComponent,
     EventsComponent,
-    GooglePlaceDirective,
     BookingsComponent,
     AlleventsComponent,
     PaymentComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,10 +41,8 @@ import { PaymentComponent } from './payment/payment.component';
     HttpClientModule,
     MatStepperModule,
     MatDialogModule,
-    GooglePlaceModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAjLyjAFCmazTPa3OB6zaB6WsiExPhxu_8',
-      libraries: ['places']
     }),
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},

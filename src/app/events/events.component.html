@@ -2,121 +2,123 @@
     <div style="background-color: white; height: 60px; color: #5D001E;">
         <div class="card">
             <div class="card-content center">
-              <h4>YOUR EVENTS</h4>
-              <a routerLink="../create" class="btn-floating btn-large waves-effect waves-light right pulse" style="margin-right: 10%;background-color: #5D001E"><i class="material-icons">add</i></a>
+                <h4>YOUR EVENTS</h4>
+                <a routerLink="../create" class="btn-floating btn-large waves-effect waves-light right pulse" style="margin-right: 10%;background-color: #5D001E"><i class="material-icons">add</i></a>
             </div>
             <div class="card-tabs">
-              <ul class="tabs tabs-fixed-width" style="width: 50%">
-                <li class="tab"><a href="#test4">PAST</a></li>
-                <li class="tab"><a href="#test5">ACTIVE NOW</a></li>
-              </ul>
+                <ul class="tabs tabs-fixed-width" style="width: 50%">
+                    <li class="tab"><a href="#test4">PAST</a></li>
+                    <li class="tab"><a href="#test5">ACTIVE NOW</a></li>
+                </ul>
             </div>
             <div class="card-content grey lighten-4">
-              <div id="test4">
-                <table class="responsive-table centered">
-                    <thead>
-                      <tr>
-                          <th>Event Name</th>
-                          <th>Date</th>
-                          <th>Venue</th>
-                          <th>Rating</th>
-                          <th>Revenue</th>
-                          <th>Statistics</th>
-                      </tr>
-                    </thead>
+                <div id="test4">
+                    <table class="responsive-table centered">
+                        <thead>
+                            <tr>
+                                <th>Event Name</th>
+                                <th>Date</th>
+                                <th>Venue</th>
+                                <th>Rating</th>
+                                <th>Revenue</th>
+                                <th>Statistics</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                      <tr *ngFor="let event of totalEvents">
-                        <td>{{event.name}}</td>
-                        <td>{{event.date}}</td>
-                        <td>{{event.venue}}</td>
-                        <td>{{event.rating}}</td>
-                        <td><button data-target="Revenue" (click)="getReve(event.id, event.name)" class="waves-effect btn modal-trigger rating">PROFITS</button></td>
-                        <td><button data-target="Statistics" (click)="getStats(event.id, event.name)" class="waves-effect btn modal-trigger rating">STATS</button></td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
-              <div id="test5">
-                  <table class="responsive-table centered">
-                      <thead>
-                        <tr>
-                            <th>Event Name</th>
-                            <th>Date</th>
-                            <th>Venue</th>
-                            <th>Rating</th>
-                        </tr>
-                      </thead>
+                        <tbody>
+                            <tr *ngFor="let event of totalEvents">
+                                <td>{{event.name}}</td>
+                                <td>{{event.date}}</td>
+                                <td>{{event.venue}}</td>
+                                <td>{{event.rating}}</td>
+                                <td>
+                                    <button data-target="Revenue" (click)="getReve(event.id, event.name)" class="waves-effect btn modal-trigger rating">PROFITS</button>
+                                </td>
+                                <td>
+                                    <button data-target="Statistics" (click)="getStats(event.id, event.name)" class="waves-effect btn modal-trigger rating">STATS</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="test5">
+                    <table class="responsive-table centered">
+                        <thead>
+                            <tr>
+                                <th>Event Name</th>
+                                <th>Date</th>
+                                <th>Venue</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
 
-                      <tbody>
-                        <tr>
-                          <td>Alvin</td>
-                          <td>Eclair</td>
-                          <td>$0.87</td>
-                        </tr>
-                      </tbody>
+                        <tbody>
+                            <tr>
+                                <td>Alvin</td>
+                                <td>Eclair</td>
+                                <td>$0.87</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
-          </div>
+        </div>
     </div>
 </div>
 
-
 <div id="Revenue" class="modal">
-  <!-- <button (click)="getReve(event.id)">GET DATA</button> -->
-  <div class="modal-content">
-    <h4>{{eventReveName}}</h4>
-    <table>
-        <thead>
-          <tr>
-              <th>Type</th>
-              <th>Quantity</th>
-          </tr>
-        </thead>
+    <!-- <button (click)="getReve(event.id)">GET DATA</button> -->
+    <div class="modal-content">
+        <h4>{{eventReveName}}</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
 
-        <tbody *ngIf="eventRevenue">
-          <tr *ngFor="let reve of eventRevenue['stats']">
-            <td>{{reve.type}}</td>
-            <td>{{reve.quantity}}</td>
-          </tr>
-        </tbody>
-      </table>
-      <h5 *ngIf="eventRevenue">TOTAL REVENUE = {{eventRevenue['total']}}</h5>
-  </div>
-  <div class="modal-footer">
-    <!-- <a href="#" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
-  </div>
+            <tbody *ngIf="eventRevenue">
+                <tr *ngFor="let reve of eventRevenue['stats']">
+                    <td>{{reve.type}}</td>
+                    <td>{{reve.quantity}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h5 *ngIf="eventRevenue">TOTAL REVENUE = {{eventRevenue['total']}}</h5>
+    </div>
+    <div class="modal-footer">
+        <!-- <a href="#" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
+    </div>
 </div>
 
-
 <div id="Statistics" class="modal">
-  <div class="modal-content">
-    <!-- <button (click)="getStats(event.id)">GET DATA</button> -->
-    <h4>{{eventReveName}}</h4>
-    <table>
-        <thead>
-          <tr>
-              <th>Ticket ID</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Ticket Type</th>
-              <th>Quantity</th>
-          </tr>
-        </thead>
+    <div class="modal-content">
+        <!-- <button (click)="getStats(event.id)">GET DATA</button> -->
+        <h4>{{eventReveName}}</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ticket ID</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Ticket Type</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
 
-        <tbody>
-          <tr *ngFor="let cus of orgEvent">
-            <td>{{cus.id}}</td>
-            <td>{{cus.email}}</td>
-            <td>{{cus.phone}}</td>
-            <td>{{cus.type}}</td>
-            <td>{{cus.quantity}}</td>
-          </tr>
-        </tbody>
-      </table>
-  </div>
-  <div class="modal-footer">
-    <!-- <a href="#" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
-  </div>
+            <tbody>
+                <tr *ngFor="let cus of orgEvent">
+                    <td>{{cus.id}}</td>
+                    <td>{{cus.email}}</td>
+                    <td>{{cus.phone}}</td>
+                    <td>{{cus.type}}</td>
+                    <td>{{cus.quantity}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <!-- <a href="#" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
+    </div>
 </div>

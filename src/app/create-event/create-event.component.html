@@ -1,293 +1,296 @@
 <div class="createEvent">
     <div style="background-color: white; height: 60px; color: #5D001E;">
-      <h4 class="center">LETS CREATE YOUR EVENT</h4>
-      <a routerLink="../myevents" class="btn-floating btn-large waves-effect waves-light right" style="margin-right: 10%;background-color: #5D001E"><i class="material-icons">close</i></a>
+        <h4 class="center">CREATE YOUR EVENT</h4>
+        <a routerLink="../myevents" class="btn-floating btn-large waves-effect waves-light right" style="margin-right: 10%;background-color: #5D001E"><i class="material-icons">close</i></a>
     </div>
-    <div class="hide-on-small-only" style="margin: 10%">
-      <form #eventForm="ngForm">
-        <mat-horizontal-stepper [linear]="isLinear" #stepper>
-          <mat-step>
-              <ng-template matStepLabel>Event Details</ng-template>
-              <div class="form-content">
-                  <div class="input-field col s6">
-                    <i class="material-icons prefix">event</i>
-                    <input type="text" class="validate" name="event_name" ngModel>
-                    <label for="event_name">Event Name</label>
-                  </div>
-                      <div class="input-field col s6">
-                          <i class="material-icons prefix">date_range</i>
-                          <input id="startDate" name="startDate" type="text" class="datepicker" ngModel>
-                          <label for="startDate">Start Date</label>
-                      </div>
-                  <div class="input-field col s6">
-                      <i class="material-icons prefix">timer</i>
-                      <input name="startTime" type="text" class="timepicker" ngModel>
-                      <label for="startTime">Start Time</label>
-                  </div>
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">image</i>
-                    <input type = "text" class="validate" name="image1" ngModel>
-                    <label for="image1">Upload Image URL 1</label>
-                </div>
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">image</i>
-                    <input type = "text" class="validate" name="image2" ngModel>
-                    <label for="image2">Upload Image URL 2</label>
-                </div>
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">image</i>
-                    <input type = "text" class="validate" name="image3" ngModel>
-                    <label for="image3">Upload Image URL 3</label>
-                </div>
-                </div>
-              <div>
-                <button class="waves-effect btn-small" matStepperNext>Next</button>
-              </div>
-          </mat-step>
-          <mat-step>
-              <ng-template matStepLabel>Select Location</ng-template>
-              <div>
-                <div class="center" style="margin: 0% 25%">
-                  <h2 class="center" style="color: #5D001E"><i class="material-icons medium prefix">pin_drop</i>  SELECT LOCATION</h2>
-                  <input ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
-                </div>
-                <agm-map (mapClick)="placeMarker($event)" [latitude]="lat" [longitude]="lng">
-                      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                  </agm-map>
-              </div>
-              <div>
-                <button class="waves-effect btn-small" matStepperPrevious>Back</button>
-                <button class="waves-effect btn-small" matStepperNext>Next</button>
-              </div>
-          </mat-step>
-          <mat-step>
-            <ng-template matStepLabel>Finishing Up</ng-template>
-            <div class="form-content">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">location_on</i>
-                    <textarea name="addres" class="materialize-textarea" ngModel></textarea>
-                    <label for="addres">Complete Address</label>
-                </div>
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">mode_edit</i>
-                    <textarea name="description" class="materialize-textarea" ngModel></textarea>
-                    <label for="description">Textarea</label>
-                </div>
-                <div class="input-field col s12">
-                  <i class="material-icons prefix">list</i>
-                  <select name="category" ngModel>
-                    <option value="Technical">Technical</option>
-                    <option value="Cultural">Cultural</option>
-                    <option value="Corporate">Corporate</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Fun">Fun</option>
-                  </select>
-                  <label>Event Category</label>
-                </div>
-                <div class="input-field col s12">
-                  <i class="material-icons prefix">list</i>
-                  <select multiple name="tags" ngModel>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Tech">Tech</option>
-                    <option value="Corporate">Corporate</option>
-                    <option value="Sports & Fitness">Sports & Fitness</option>
-                    <option value="Education">Education</option>
-                  </select>
-                  <label>Event Tags</label>
-                </div>
-            </div>
-            <div>
-                <button class="waves-effect btn-small" matStepperPrevious>Back</button>
-                <button class="waves-effect btn-small" matStepperNext>Next</button>
-            </div>
-          </mat-step>
-          <mat-step>
-              <ng-template matStepLabel>Ticket Details</ng-template>
-              <div class="form-content">
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix">attach_money</i>
-                      <input name="ticket_price1" type="number" ngModel>
-                      <label for="ticket_price1">Ticket Price 1</label>
-                  </div>
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix">assessment</i>
-                      <input name="ticket_avbl1" type="number" ngModel>
-                      <label for="ticket_avbl1">Ticket Quantity 1</label>
-                  </div>
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix">attach_money</i>
-                      <input name="ticket_price2" type="number" ngModel>
-                      <label for="ticket_price2">Ticket Price 2</label>
-                  </div>
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix">assessment</i>
-                      <input name="ticket_avbl2" type="number" ngModel>
-                      <label for="ticket_avbl2">Ticket Quantity 2</label>
-                  </div>
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix">attach_money</i>
-                      <input name="ticket_price3" type="number" ngModel>
-                      <label for="ticket_price3">Ticket Price 3</label>
-                  </div>
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix">assessment</i>
-                      <input name="ticket_avbl3" type="number" ngModel>
-                      <label for="ticket_avbl3">Ticket Quantity 3</label>
-                  </div>
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix">short_text</i>
-                      <textarea name="ticket_desc" class="materialize-textarea" ngModel></textarea>
-                      <label for="ticket_desc">Ticket Description</label>
-                  </div>
-                  <button type="submit" (click)="eventFunc(eventForm)" class="btn waves-effect col s12" style="background-color: #5D001E">SUBMIT EVENT</button><br><br>
-                  <button class="waves-effect btn-small" matStepperPrevious>Back</button>
-                  <button class="waves-effect btn-small" (click)="stepper.reset()">Reset</button>
-              </div>
-          </mat-step>
-        </mat-horizontal-stepper>
-      </form>
-    </div>
-    <div class="show-on-small hide-on-med-and-up">
+    <div class="hide-on-small-only z-depth-3" style="margin: 10%">
         <form #eventForm="ngForm">
-          <mat-vertical-stepper [linear]="isLinear" #stepper>
-            <mat-step>
-                <ng-template matStepLabel>Event Details</ng-template>
-                <div class="form-content">
-                    <div class="input-field col s6">
-                      <i class="material-icons prefix">event</i>
-                      <input type="text" class="validate" name="event_name" ngModel>
-                      <label for="event_name">Event Name</label>
-                    </div>
+            <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                <mat-step>
+                    <ng-template matStepLabel>Event Details</ng-template>
+                    <div class="form-content">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">event</i>
+                            <input type="text" class="validate" name="event_name" ngModel>
+                            <label for="event_name">Event Name</label>
+                        </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">date_range</i>
                             <input id="startDate" name="startDate" type="text" class="datepicker" ngModel>
                             <label for="startDate">Start Date</label>
                         </div>
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">timer</i>
-                        <input name="startTime" type="text" class="timepicker" ngModel>
-                        <label for="startTime">Start Time</label>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">timer</i>
+                            <input name="startTime" type="text" class="timepicker" ngModel>
+                            <label for="startTime">Start Time</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">image</i>
+                            <input type="text" class="validate" name="image1" ngModel>
+                            <label for="image1">Upload Image URL 1</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">image</i>
+                            <input type="text" class="validate" name="image2" ngModel>
+                            <label for="image2">Upload Image URL 2</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">image</i>
+                            <input type="text" class="validate" name="image3" ngModel>
+                            <label for="image3">Upload Image URL 3</label>
+                        </div>
                     </div>
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix">image</i>
-                      <input type = "text" class="validate" name="image1" ngModel>
-                      <label for="image1">Upload Image URL 1</label>
-                  </div>
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix">image</i>
-                      <input type = "text" class="validate" name="image2" ngModel>
-                      <label for="image2">Upload Image URL 2</label>
-                  </div>
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix">image</i>
-                      <input type = "text" class="validate" name="image3" ngModel>
-                      <label for="image3">Upload Image URL 3</label>
-                  </div>
-                  </div>
-                <div>
-                  <button class="waves-effect btn-small" matStepperNext>Next</button>
-                </div>
-            </mat-step>
-            <mat-step>
-                <ng-template matStepLabel>Select Location</ng-template>
-                <div>
-                  <!-- <div class="center" style="margin: 0% 25%"> -->
-                    <h4 class="center" style="color: #5D001E"><i class="material-icons prefix">pin_drop</i>  SELECT LOCATION</h4>
-                    <input ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" />
-                  <!-- </div> -->
-                  <agm-map (mapClick)="placeMarker($event)" [latitude]="lat" [longitude]="lng">
-                        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                    </agm-map>
-                </div>
-                <div>
-                  <button class="waves-effect btn-small" matStepperPrevious>Back</button>
-                  <button class="waves-effect btn-small" matStepperNext>Next</button>
-                </div>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Finishing Up</ng-template>
-              <div class="form-content">
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix">location_on</i>
-                      <textarea name="addres" class="materialize-textarea" ngModel></textarea>
-                      <label for="addres">Complete Address</label>
-                  </div>
-                  <div class="input-field col s12">
-                      <i class="material-icons prefix">mode_edit</i>
-                      <textarea name="description" class="materialize-textarea" ngModel></textarea>
-                      <label for="description">Textarea</label>
-                  </div>
-                  <div class="input-field col s12">
-                    <i class="material-icons prefix">list</i>
-                    <select name="category" ngModel>
-                      <option value="Technical">Technical</option>
-                      <option value="Cultural">Cultural</option>
-                      <option value="Corporate">Corporate</option>
-                      <option value="Sports">Sports</option>
-                      <option value="Fun">Fun</option>
-                    </select>
-                    <label>Event Category</label>
-                  </div>
-                  <div class="input-field col s12">
-                    <i class="material-icons prefix">list</i>
-                    <select multiple name="tags" ngModel>
-                      <option value="Entertainment">Entertainment</option>
-                      <option value="Tech">Tech</option>
-                      <option value="Corporate">Corporate</option>
-                      <option value="Sports & Fitness">Sports & Fitness</option>
-                      <option value="Education">Education</option>
-                    </select>
-                    <label>Event Tags</label>
-                  </div>
-              </div>
-              <div>
-                  <button class="waves-effect btn-small" matStepperPrevious>Back</button>
-                  <button class="waves-effect btn-small" matStepperNext>Next</button>
-              </div>
-            </mat-step>
-            <mat-step>
-                <ng-template matStepLabel>Ticket Details</ng-template>
-                <div class="form-content">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">attach_money</i>
-                        <input name="ticket_price1" type="number" ngModel>
-                        <label for="ticket_price1">Ticket Price 1</label>
+                    <div>
+                        <button class="waves-effect btn-small" matStepperNext>Next</button>
                     </div>
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">assessment</i>
-                        <input name="ticket_avbl1" type="number" ngModel>
-                        <label for="ticket_avbl1">Ticket Quantity 1</label>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Select Location</ng-template>
+                    <div>
+                        <div class="center" style="margin: 0% 25%">
+                            <h2 class="center" style="color: #5D001E"><i class="material-icons medium prefix">pin_drop</i>  SELECT LOCATION</h2>
+                            <!-- <input ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" /> -->
+                        </div>
+                        <agm-map (mapClick)="placeMarker($event)" [latitude]="lat" [longitude]="lng">
+                            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                        </agm-map>
                     </div>
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">attach_money</i>
-                        <input name="ticket_price2" type="number" ngModel>
-                        <label for="ticket_price2">Ticket Price 2</label>
+                    <div>
+                        <button class="waves-effect btn-small" matStepperPrevious>Back</button>
+                        <button class="waves-effect btn-small" matStepperNext>Next</button>
                     </div>
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">assessment</i>
-                        <input name="ticket_avbl2" type="number" ngModel>
-                        <label for="ticket_avbl2">Ticket Quantity 2</label>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Finishing Up</ng-template>
+                    <div class="form-content">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">location_on</i>
+                            <textarea name="addres" class="materialize-textarea" ngModel></textarea>
+                            <label for="addres">Complete Address</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <textarea name="description" class="materialize-textarea" ngModel></textarea>
+                            <label for="description">Textarea</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">list</i>
+                            <select name="category" ngModel>
+                                <option value="Technical">Technical</option>
+                                <option value="Cultural">Cultural</option>
+                                <option value="Corporate">Corporate</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Fun">Fun</option>
+                            </select>
+                            <label>Event Category</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">list</i>
+                            <select multiple name="tags" ngModel>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Tech">Tech</option>
+                                <option value="Corporate">Corporate</option>
+                                <option value="Sports & Fitness">Sports & Fitness</option>
+                                <option value="Education">Education</option>
+                            </select>
+                            <label>Event Tags</label>
+                        </div>
                     </div>
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">attach_money</i>
-                        <input name="ticket_price3" type="number" ngModel>
-                        <label for="ticket_price3">Ticket Price 3</label>
+                    <div>
+                        <button class="waves-effect btn-small" matStepperPrevious>Back</button>
+                        <button class="waves-effect btn-small" matStepperNext>Next</button>
                     </div>
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">assessment</i>
-                        <input name="ticket_avbl3" type="number" ngModel>
-                        <label for="ticket_avbl3">Ticket Quantity 3</label>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Ticket Details</ng-template>
+                    <div class="form-content">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">attach_money</i>
+                            <input name="ticket_price1" type="number" ngModel>
+                            <label for="ticket_price1">Ticket Price 1</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">assessment</i>
+                            <input name="ticket_avbl1" type="number" ngModel>
+                            <label for="ticket_avbl1">Ticket Quantity 1</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">attach_money</i>
+                            <input name="ticket_price2" type="number" ngModel>
+                            <label for="ticket_price2">Ticket Price 2</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">assessment</i>
+                            <input name="ticket_avbl2" type="number" ngModel>
+                            <label for="ticket_avbl2">Ticket Quantity 2</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">attach_money</i>
+                            <input name="ticket_price3" type="number" ngModel>
+                            <label for="ticket_price3">Ticket Price 3</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">assessment</i>
+                            <input name="ticket_avbl3" type="number" ngModel>
+                            <label for="ticket_avbl3">Ticket Quantity 3</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">short_text</i>
+                            <textarea name="ticket_desc" class="materialize-textarea" ngModel></textarea>
+                            <label for="ticket_desc">Ticket Description</label>
+                        </div>
+                        <button type="submit" (click)="eventFunc(eventForm)" class="btn waves-effect col s12" style="background-color: #5D001E">SUBMIT EVENT</button>
+                        <br>
+                        <br>
+                        <button class="waves-effect btn-small" matStepperPrevious>Back</button>
+                        <button class="waves-effect btn-small" (click)="stepper.reset()">Reset</button>
                     </div>
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">short_text</i>
-                        <textarea name="ticket_desc" class="materialize-textarea" ngModel></textarea>
-                        <label for="ticket_desc">Ticket Description</label>
-                    </div>
-                    <button type="submit" (click)="eventFunc(eventForm)" class="btn waves-effect col s12" style="background-color: #5D001E">SUBMIT EVENT</button><br><br>
-                    <button class="waves-effect btn-small" matStepperPrevious>Back</button>
-                    <button class="waves-effect btn-small" (click)="stepper.reset()">Reset</button>
-                </div>
-            </mat-step>
-          </mat-vertical-stepper>
+                </mat-step>
+            </mat-horizontal-stepper>
         </form>
+    </div>
+    <div class="show-on-small hide-on-med-and-up">
+        <form #eventForm="ngForm">
+            <mat-vertical-stepper [linear]="isLinear" #stepper>
+                <mat-step>
+                    <ng-template matStepLabel>Event Details</ng-template>
+                    <div class="form-content">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">event</i>
+                            <input type="text" class="validate wide" name="event_name" ngModel>
+                            <label for="event_name">Event Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">date_range</i>
+                            <input name="startDate" type="text" class="datepicker wide" ngModel>
+                            <label for="startDate">Start Date</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">timer</i>
+                            <input name="startTime" type="text" class="timepicker wide" ngModel>
+                            <label for="startTime">Start Time</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">image</i>
+                            <input type="text" class="validate wide" name="image1" ngModel>
+                            <label for="image1">Image 1</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">image</i>
+                            <input type="text" class="validate wide" name="image2" ngModel>
+                            <label for="image2">Image 2</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">image</i>
+                            <input type="text" class="validate wide" name="image3" ngModel>
+                            <label for="image3">Image 3</label>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="waves-effect btn-small" matStepperNext>Next</button>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Select Location</ng-template>
+                    <div>
+                        <h4 class="center" style="color: #5D001E"><i class="material-icons prefix">pin_drop</i>  SELECT LOCATION</h4>
+                        <!-- <input ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" /> -->
+                        <agm-map (mapClick)="placeMarker($event)" [latitude]="lat" [longitude]="lng">
+                            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                        </agm-map>
+                    </div>
+                    <div>
+                        <button class="waves-effect btn-small" matStepperPrevious>Back</button>
+                        <button class="waves-effect btn-small" matStepperNext>Next</button>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Finishing Up</ng-template>
+                    <div class="form-content">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">location_on</i>
+                            <textarea name="addres" class="materialize-textarea" ngModel></textarea>
+                            <label for="addres">Complete Address</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mode_edit</i>
+                            <textarea name="description" class="materialize-textarea" ngModel></textarea>
+                            <label for="description">Textarea</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">list</i>
+                            <select name="category" ngModel>
+                                <option value="Technical">Technical</option>
+                                <option value="Cultural">Cultural</option>
+                                <option value="Corporate">Corporate</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Fun">Fun</option>
+                            </select>
+                            <label>Event Category</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">list</i>
+                            <select multiple name="tags" ngModel>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Tech">Tech</option>
+                                <option value="Corporate">Corporate</option>
+                                <option value="Sports & Fitness">Sports & Fitness</option>
+                                <option value="Education">Education</option>
+                            </select>
+                            <label>Event Tags</label>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="waves-effect btn-small" matStepperPrevious>Back</button>
+                        <button class="waves-effect btn-small" matStepperNext>Next</button>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Ticket Details</ng-template>
+                    <div class="form-content">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">attach_money</i>
+                            <input name="ticket_price1" type="number" ngModel>
+                            <label for="ticket_price1">Ticket Price 1</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">assessment</i>
+                            <input name="ticket_avbl1" type="number" ngModel>
+                            <label for="ticket_avbl1">Ticket Quantity 1</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">attach_money</i>
+                            <input name="ticket_price2" type="number" ngModel>
+                            <label for="ticket_price2">Ticket Price 2</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">assessment</i>
+                            <input name="ticket_avbl2" type="number" ngModel>
+                            <label for="ticket_avbl2">Ticket Quantity 2</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">attach_money</i>
+                            <input name="ticket_price3" type="number" ngModel>
+                            <label for="ticket_price3">Ticket Price 3</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">assessment</i>
+                            <input name="ticket_avbl3" type="number" ngModel>
+                            <label for="ticket_avbl3">Ticket Quantity 3</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">short_text</i>
+                            <textarea name="ticket_desc" class="materialize-textarea" ngModel></textarea>
+                            <label for="ticket_desc">Ticket Description</label>
+                        </div>
+                        <button type="submit" (click)="eventFunc(eventForm)" class="btn waves-effect col s12" style="background-color: #5D001E">SUBMIT EVENT</button>
+                        <br>
+                        <br>
+                        <button class="waves-effect btn-small" matStepperPrevious>Back</button>
+                        <button class="waves-effect btn-small" (click)="stepper.reset()">Reset</button>
+                    </div>
+                </mat-step>
+            </mat-vertical-stepper>
+        </form>
+    </div>
 </div>

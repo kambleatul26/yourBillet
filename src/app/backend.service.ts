@@ -72,12 +72,8 @@ export class BackendService {
 
 /*
 
-PAYMENT event name
-PAYMENT redirect to TICKETs with success msg (BUFFER)
-FOOTER
 POSTER
 ORGANIZED RATINGS
-STYLING EVERYTHING
 
 
 SEARCH

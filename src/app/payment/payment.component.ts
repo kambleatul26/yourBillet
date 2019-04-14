@@ -39,6 +39,7 @@ export class PaymentComponent implements OnInit {
     console.log(typeNum);
     console.log(this.quantity);
     this.backendService.bookTicket(typeNum, this.quantity, this.param);
+    M.toast({html: 'Congratulations! Tickets are Booked.', classes: 'rounded', outDuration: '1000'});
   }
 
   toastFunc1() {

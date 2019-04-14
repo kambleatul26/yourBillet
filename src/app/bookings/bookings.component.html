@@ -2,115 +2,124 @@
     <div style="background-color: white; height: 60px; color: #5D001E;">
         <div class="card">
             <div class="card-content center">
-              <h4>YOUR BOOKINGS</h4>
-              <a routerLink="../allevents" class="btn-floating btn-large waves-effect waves-light left pulse" style="margin-right: 10%;background-color: #5D001E"><i class="material-icons">dvr</i></a>
+                <h4>YOUR BOOKINGS</h4>
+                <a routerLink="../allevents" class="btn-floating btn-large waves-effect waves-light left pulse" style="margin-right: 10%;background-color: #5D001E"><i class="material-icons">dvr</i></a>
             </div>
             <div class="card-tabs">
-              <ul class="tabs tabs-fixed-width" style="width: 50%">
-                <li class="tab"><a href="#test4">PAST</a></li>
-                <li class="tab"><a href="#test5">ACTIVE NOW</a></li>
-              </ul>
+                <ul class="tabs tabs-fixed-width" style="width: 50%">
+                    <li class="tab"><a href="#test4">PAST</a></li>
+                    <li class="tab"><a href="#test5">ACTIVE NOW</a></li>
+                </ul>
             </div>
             <div class="card-content grey lighten-4">
-              <div id="test4">
-                <table class="responsive-table centered">
-                    <thead>
-                      <tr>
-                          <th>EVENT</th>
-                          <th>DATE</th>
-                          <th>PRICE</th>
-                          <th>QUANTITY</th>
-                          <th>TYPE</th>
-                          <th>RATING</th>
-                          <th>QR CODE</th>
-                          <th>RESEND INVOICE</th>
-                      </tr>
-                    </thead>
+                <div id="test4">
+                    <table class="responsive-table centered">
+                        <thead>
+                            <tr>
+                                <th>EVENT</th>
+                                <th>DATE</th>
+                                <th>PRICE</th>
+                                <th>QUANTITY</th>
+                                <th>TYPE</th>
+                                <th>RATING</th>
+                                <th>QR CODE</th>
+                                <th>RESEND INVOICE</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                      <tr *ngFor="let event of bookings">
-                        <td>{{event.name}}</td>
-                        <td>{{event.date}}</td>
-                        <td>{{event.total}}</td>
-                        <td>{{event.quantity}}</td>
-                        <td [ngSwitch]="event.type">
-                          <p *ngSwitchCase="1">PREMIUM</p>
-                          <p *ngSwitchCase="2">ECONOMY</p>
-                          <p *ngSwitchCase="3">GOLD</p>
-                        </td>
-                        <td><button data-target="Rating" (click)="rating(event.id, event.name)" class="waves-effect btn modal-trigger rating">RATE EVENT</button></td>
-                        <td><button data-target="QR" (click)="qrCode(event.id, event.name, event.url)" class="waves-effect btn modal-trigger rating">GET QR CODE</button></td>
-                        <td><button class="btn-small rating">INVOICE</button></td>
-                      </tr>
-                    </tbody>
-                  </table>
-              </div>
-              <div id="test5">
-                  <table class="responsive-table centered">
-                      <thead>
-                        <tr>
-                            <th>EVENT</th>
-                            <th>DATE</th>
-                            <th>PRICE</th>
-                            <th>RATING</th>
-                            <th>QR CODE</th>
-                            <th>RESEND INVOICE</th>
-                        </tr>
-                      </thead>
+                        <tbody>
+                            <tr *ngFor="let event of bookings">
+                                <td>{{event.name}}</td>
+                                <td>{{event.date}}</td>
+                                <td>{{event.total}}</td>
+                                <td>{{event.quantity}}</td>
+                                <td [ngSwitch]="event.type">
+                                    <p *ngSwitchCase="1">PREMIUM</p>
+                                    <p *ngSwitchCase="2">ECONOMY</p>
+                                    <p *ngSwitchCase="3">GOLD</p>
+                                </td>
+                                <td>
+                                    <button data-target="Rating" (click)="rating(event.id, event.name)" class="waves-effect btn modal-trigger rating">RATE EVENT</button>
+                                </td>
+                                <td>
+                                    <button data-target="QR" (click)="qrCode(event.id, event.name, event.url)" class="waves-effect btn modal-trigger rating">GET QR CODE</button>
+                                </td>
+                                <td>
+                                    <button class="btn-small rating">INVOICE</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="test5">
+                    <table class="responsive-table centered">
+                        <thead>
+                            <tr>
+                                <th>EVENT</th>
+                                <th>DATE</th>
+                                <th>PRICE</th>
+                                <th>RATING</th>
+                                <th>QR CODE</th>
+                                <th>RESEND INVOICE</th>
+                            </tr>
+                        </thead>
 
-                      <tbody>
-                        <tr>
-                          <td>Alvin</td>
-                          <td>Eclair</td>
-                          <td>$0.87</td>
-                          <td><button class="btn-small rating">RATE EVENT</button></td>
-                          <td><button class="btn-small rating">SEE CODE</button></td>
-                          <td><button class="btn-small rating">INVOICE</button></td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td>Alvin</td>
+                                <td>Eclair</td>
+                                <td>$0.87</td>
+                                <td>
+                                    <button class="btn-small rating">RATE EVENT</button>
+                                </td>
+                                <td>
+                                    <button class="btn-small rating">SEE CODE</button>
+                                </td>
+                                <td>
+                                    <button class="btn-small rating">INVOICE</button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-          </div>
+        </div>
     </div>
 </div>
 
-
-
 <div id="Rating" class="modal">
-  <form #ratingForm="ngForm">
-  <div class="modal-content">
-    <h4>{{eventName}}</h4>
-        <div class="rate">
-            <input type="radio" id="star5" name="rate" value="5" ngModel/>
-            <label for="star5" title="text">5 stars</label>
-            <input type="radio" id="star4" name="rate" value="4" ngModel />
-            <label for="star4" title="text">4 stars</label>
-            <input type="radio" id="star3" name="rate" value="3" ngModel />
-            <label for="star3" title="text">3 stars</label>
-            <input type="radio" id="star2" name="rate" value="2" ngModel />
-            <label for="star2" title="text">2 stars</label>
-            <input type="radio" id="star1" name="rate" value="1" ngModel />
-            <label for="star1" title="text">1 star</label>
+    <form #ratingForm="ngForm">
+        <div class="modal-content">
+            <h4>{{eventName}}</h4>
+            <div class="rate">
+                <input type="radio" id="star5" name="rate" value="5" ngModel/>
+                <label for="star5" title="text">5 stars</label>
+                <input type="radio" id="star4" name="rate" value="4" ngModel />
+                <label for="star4" title="text">4 stars</label>
+                <input type="radio" id="star3" name="rate" value="3" ngModel />
+                <label for="star3" title="text">3 stars</label>
+                <input type="radio" id="star2" name="rate" value="2" ngModel />
+                <label for="star2" title="text">2 stars</label>
+                <input type="radio" id="star1" name="rate" value="1" ngModel />
+                <label for="star1" title="text">1 star</label>
+            </div>
+            <h6>Mail us at xyz@yourbillet.com & +91 7777777777 for any help</h6>
         </div>
-        <h6>Mail us at xyz@yourbillet.com & +91 7777777777 for any help</h6>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" (click)="rate(ratingForm)" class="btn waves-effect col s12" style="background-color: #5D001E">SUBMIT RATING</button>
-        <!-- <a href="#" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
-      </div>
+        <div class="modal-footer">
+            <button type="submit" (click)="rate(ratingForm)" class="btn waves-effect col s12" style="background-color: #5D001E">SUBMIT RATING</button>
+            <!-- <a href="#" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
+        </div>
     </form>
 </div>
 
-
 <div id="QR" class="modal">
-  <div class="modal-content">
-    <h4 class="center">{{eventName}}</h4>
+    <div class="modal-content">
+        <h4 class="center">{{eventName}}</h4>
         <div style="margin: auto">
-          <img class="materialboxed" src="{{url}}">
+            <img class="materialboxed" src="{{url}}">
         </div>
-      </div>
-      <div class="modal-footer">
+    </div>
+    <div class="modal-footer">
         <!-- <a href="#" class="modal-close waves-effect waves-green btn-flat">Agree</a> -->
-      </div>
+    </div>
 </div>
