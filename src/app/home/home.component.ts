@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BackendService } from '../backend.service';
-import { InteractionService } from '../interaction.service';
+// import { InteractionService } from '../interaction.service';
 
 declare let $: any;
 declare var carousel: Function;
@@ -16,11 +16,11 @@ export class HomeComponent implements OnInit {
   homeEvent$;
 
   payment(eid, ename) {
-    this.interactionService.sendMessage(ename);
+    // this.interactionService.sendMessage(ename);
     this.router.navigate(['/home/' + eid]);
   }
 
-  constructor(private router: Router, private backendService: BackendService, private interactionService: InteractionService) {
+  constructor(private router: Router, private backendService: BackendService) {
     $(document).ready(function() {
       $('.modal').modal({
           dismissible: true, // Modal can be dismissed by clicking outside of the modal

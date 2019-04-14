@@ -7,8 +7,8 @@
             </div>
             <div class="card-tabs">
                 <ul class="tabs tabs-fixed-width" style="width: 50%">
-                    <li class="tab"><a href="#test4">PAST</a></li>
-                    <li class="tab"><a href="#test5">ACTIVE NOW</a></li>
+                    <li class="tab"><a href="#test4">ACTIVE NOW</a></li>
+                    <li class="tab"><a href="#test5">PAST</a></li>
                 </ul>
             </div>
             <div class="card-content grey lighten-4">
@@ -25,8 +25,8 @@
                             </tr>
                         </thead>
 
-                        <tbody>
-                            <tr *ngFor="let event of totalEvents">
+                        <tbody *ngIf='totalEvents'>
+                            <tr *ngFor="let event of totalEvents['aevents']">
                                 <td>{{event.name}}</td>
                                 <td>{{event.date}}</td>
                                 <td>{{event.venue}}</td>
@@ -42,25 +42,34 @@
                     </table>
                 </div>
                 <div id="test5">
-                    <table class="responsive-table centered">
-                        <thead>
-                            <tr>
-                                <th>Event Name</th>
-                                <th>Date</th>
-                                <th>Venue</th>
-                                <th>Rating</th>
-                            </tr>
-                        </thead>
+                  <table class="responsive-table centered">
+                    <thead>
+                        <tr>
+                            <th>Event Name</th>
+                            <th>Date</th>
+                            <th>Venue</th>
+                            <th>Rating</th>
+                            <th>Revenue</th>
+                            <th>Statistics</th>
+                        </tr>
+                    </thead>
 
-                        <tbody>
-                            <tr>
-                                <td>Alvin</td>
-                                <td>Eclair</td>
-                                <td>$0.87</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <tbody *ngIf='totalEvents'>
+                        <tr *ngFor="let event of totalEvents['pevents']">
+                            <td>{{event.name}}</td>
+                            <td>{{event.date}}</td>
+                            <td>{{event.venue}}</td>
+                            <td>{{event.rating}}</td>
+                            <td>
+                                <button data-target="Revenue" (click)="getReve(event.id, event.name)" class="waves-effect btn modal-trigger rating">PROFITS</button>
+                            </td>
+                            <td>
+                                <button data-target="Statistics" (click)="getStats(event.id, event.name)" class="waves-effect btn modal-trigger rating">STATS</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             </div>
         </div>
     </div>
@@ -78,12 +87,20 @@
                 </tr>
             </thead>
 
-            <tbody *ngIf="eventRevenue">
+            <tbody *ngIf="eventRevenue; else elseBlock">
                 <tr *ngFor="let reve of eventRevenue['stats']">
                     <td>{{reve.type}}</td>
                     <td>{{reve.quantity}}</td>
                 </tr>
             </tbody>
+            <ng-template #elseBlock>
+              <tbody>
+                <tr>
+                    <td>NA</td>
+                    <td>NA</td>
+                </tr>
+              </tbody>
+            </ng-template>
         </table>
         <h5 *ngIf="eventRevenue">TOTAL REVENUE = {{eventRevenue['total']}}</h5>
     </div>
@@ -107,7 +124,7 @@
                 </tr>
             </thead>
 
-            <tbody>
+            <tbody *ngIf="orgEvent; else elseBlock1">
                 <tr *ngFor="let cus of orgEvent">
                     <td>{{cus.id}}</td>
                     <td>{{cus.email}}</td>
@@ -116,6 +133,17 @@
                     <td>{{cus.quantity}}</td>
                 </tr>
             </tbody>
+            <ng-template #elseBlock1>
+              <tbody>
+                <tr>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                    <td>NA</td>
+                </tr>
+              </tbody>
+            </ng-template>
         </table>
     </div>
     <div class="modal-footer">

@@ -9,3 +9,7 @@
 tabs .tab a.active {
 	color: #5D001E;
 }
+
+.btn {
+  background: #5D001E;
+}

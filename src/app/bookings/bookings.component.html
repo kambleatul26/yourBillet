@@ -7,8 +7,8 @@
             </div>
             <div class="card-tabs">
                 <ul class="tabs tabs-fixed-width" style="width: 50%">
-                    <li class="tab"><a href="#test4">PAST</a></li>
-                    <li class="tab"><a href="#test5">ACTIVE NOW</a></li>
+                    <li class="tab"><a href="#test4">ACTIVE NOW</a></li>
+                    <li class="tab"><a href="#test5">PAST</a></li>
                 </ul>
             </div>
             <div class="card-content grey lighten-4">
@@ -27,8 +27,8 @@
                             </tr>
                         </thead>
 
-                        <tbody>
-                            <tr *ngFor="let event of bookings">
+                        <tbody *ngIf='bookings'>
+                            <tr *ngFor="let event of bookings['atickets']">
                                 <td>{{event.name}}</td>
                                 <td>{{event.date}}</td>
                                 <td>{{event.total}}</td>
@@ -52,36 +52,44 @@
                     </table>
                 </div>
                 <div id="test5">
-                    <table class="responsive-table centered">
-                        <thead>
-                            <tr>
-                                <th>EVENT</th>
-                                <th>DATE</th>
-                                <th>PRICE</th>
-                                <th>RATING</th>
-                                <th>QR CODE</th>
-                                <th>RESEND INVOICE</th>
-                            </tr>
-                        </thead>
+                  <table class="responsive-table centered">
+                    <thead>
+                        <tr>
+                            <th>EVENT</th>
+                            <th>DATE</th>
+                            <th>PRICE</th>
+                            <th>QUANTITY</th>
+                            <th>TYPE</th>
+                            <th>RATING</th>
+                            <th>QR CODE</th>
+                            <th>RESEND INVOICE</th>
+                        </tr>
+                    </thead>
 
-                        <tbody>
-                            <tr>
-                                <td>Alvin</td>
-                                <td>Eclair</td>
-                                <td>$0.87</td>
-                                <td>
-                                    <button class="btn-small rating">RATE EVENT</button>
-                                </td>
-                                <td>
-                                    <button class="btn-small rating">SEE CODE</button>
-                                </td>
-                                <td>
-                                    <button class="btn-small rating">INVOICE</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <tbody *ngIf='bookings'>
+                        <tr *ngFor="let event of bookings['ptickets']">
+                            <td>{{event.name}}</td>
+                            <td>{{event.date}}</td>
+                            <td>{{event.total}}</td>
+                            <td>{{event.quantity}}</td>
+                            <td [ngSwitch]="event.type">
+                                <p *ngSwitchCase="1">PREMIUM</p>
+                                <p *ngSwitchCase="2">ECONOMY</p>
+                                <p *ngSwitchCase="3">GOLD</p>
+                            </td>
+                            <td>
+                                <button data-target="Rating" (click)="rating(event.id, event.name)" class="waves-effect btn modal-trigger rating">RATE EVENT</button>
+                            </td>
+                            <td>
+                                <button data-target="QR" (click)="qrCode(event.id, event.name, event.url)" class="waves-effect btn modal-trigger rating">GET QR CODE</button>
+                            </td>
+                            <td>
+                                <button class="btn-small rating">INVOICE</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             </div>
         </div>
     </div>

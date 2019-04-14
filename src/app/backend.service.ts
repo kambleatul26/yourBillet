@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BackendService {
 
-  url = 'https://40801e14.ngrok.io/';
+  url = 'http://secure-sands-68903.herokuapp.com/';
 
   regEvent(event) {
     this.http.post(this.url + 'event/create', event)
@@ -53,7 +53,7 @@ export class BackendService {
   }
 
   ticketPrice(eventid) {
-    return this.http.get(this.url + '/' + eventid);
+    return this.http.get(this.url + 'ticket/' + eventid);
   }
 
   rate(id, num) {
@@ -72,6 +72,7 @@ export class BackendService {
 
 /*
 
+PREVIOUS DATA WHEN NO DATA IS RENDERED
 POSTER
 ORGANIZED RATINGS
 

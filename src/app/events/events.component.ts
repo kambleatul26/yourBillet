@@ -26,6 +26,7 @@ export class EventsComponent implements OnInit {
           onCloseEnd: function() { // Callback for Modal close
             // alert('Closed');
             this.eventRevenue = undefined;
+            this.orgEvent = undefined;
           }
         }
       );
@@ -39,6 +40,7 @@ export class EventsComponent implements OnInit {
 
     this.backendService.organizerEvents(localStorage.getItem('uniqueID')).subscribe(res => {
       this.totalEvents = res;
+      console.log(res);
     });
   }
 
