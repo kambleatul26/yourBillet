@@ -34,9 +34,9 @@
                                 <td>{{event.total}}</td>
                                 <td>{{event.quantity}}</td>
                                 <td [ngSwitch]="event.type">
-                                    <p *ngSwitchCase="1">PREMIUM</p>
-                                    <p *ngSwitchCase="2">ECONOMY</p>
-                                    <p *ngSwitchCase="3">GOLD</p>
+                                    <p *ngSwitchCase="0">PREMIUM</p>
+                                    <p *ngSwitchCase="1">ECONOMY</p>
+                                    <p *ngSwitchCase="2">GOLD</p>
                                 </td>
                                 <td>
                                     <button data-target="Rating" (click)="rating(event.eventId, event.name)" class="waves-effect btn modal-trigger rating">RATE EVENT</button>
@@ -73,9 +73,9 @@
                             <td>{{event.total}}</td>
                             <td>{{event.quantity}}</td>
                             <td [ngSwitch]="event.type">
-                                <p *ngSwitchCase="1">PREMIUM</p>
-                                <p *ngSwitchCase="2">ECONOMY</p>
-                                <p *ngSwitchCase="3">GOLD</p>
+                                <p *ngSwitchCase="0">PREMIUM</p>
+                                <p *ngSwitchCase="1">ECONOMY</p>
+                                <p *ngSwitchCase="2">GOLD</p>
                             </td>
                             <td>
                                 <button data-target="Rating" (click)="rating(event.eventId, event.name)" class="waves-effect btn modal-trigger rating">RATE EVENT</button>

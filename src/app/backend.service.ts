@@ -60,7 +60,7 @@ export class BackendService {
     this.http.post(this.url + 'event/rating', {
       'eventId': id,
       'rating': Number(num),
-      'user': localStorage.getItem('user')
+      'userId': localStorage.getItem('uniqueID')
     })
     .subscribe(res => {
       console.log(res);
