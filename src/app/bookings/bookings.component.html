@@ -39,7 +39,7 @@
                                     <p *ngSwitchCase="3">GOLD</p>
                                 </td>
                                 <td>
-                                    <button data-target="Rating" (click)="rating(event.id, event.name)" class="waves-effect btn modal-trigger rating">RATE EVENT</button>
+                                    <button data-target="Rating" (click)="rating(event.eventId, event.name)" class="waves-effect btn modal-trigger rating">RATE EVENT</button>
                                 </td>
                                 <td>
                                     <button data-target="QR" (click)="qrCode(event.id, event.name, event.url)" class="waves-effect btn modal-trigger rating">GET QR CODE</button>
@@ -78,7 +78,7 @@
                                 <p *ngSwitchCase="3">GOLD</p>
                             </td>
                             <td>
-                                <button data-target="Rating" (click)="rating(event.id, event.name)" class="waves-effect btn modal-trigger rating">RATE EVENT</button>
+                                <button data-target="Rating" (click)="rating(event.eventId, event.name)" class="waves-effect btn modal-trigger rating">RATE EVENT</button>
                             </td>
                             <td>
                                 <button data-target="QR" (click)="qrCode(event.id, event.name, event.url)" class="waves-effect btn modal-trigger rating">GET QR CODE</button>

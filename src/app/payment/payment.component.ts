@@ -45,14 +45,29 @@ export class PaymentComponent implements OnInit {
   toastFunc1() {
     console.log(this.prices['tickets'][0].price);
     M.toast({html: '<ul><li>Tickets Available = ' + this.prices['tickets'][0].quantity + '<li>Price = ' + this.prices['tickets'][0].price + '</ul>', classes: 'rounded', outDuration: '1000'});
+    this.backendService.ticketPrice(this.param).subscribe(res => {
+      this.prices = res;
+      this.eventName = this.prices['ename'];
+      console.log(this.prices);
+    });
   }
 
   toastFunc2() {
     M.toast({html: '<ul><li>Tickets Available = ' + this.prices['tickets'][1].quantity + '<li>Price = ' + this.prices['tickets'][1].price + '</ul>', classes: 'rounded', outDuration: '1000'});
+    this.backendService.ticketPrice(this.param).subscribe(res => {
+      this.prices = res;
+      this.eventName = this.prices['ename'];
+      console.log(this.prices);
+    });
   }
 
   toastFunc3() {
     M.toast({html: '<ul><li>Tickets Available = ' + this.prices['tickets'][2].quantity + '<li>Price = ' + this.prices['tickets'][2].price + '</ul>', classes: 'rounded', outDuration: '1000'});
+    this.backendService.ticketPrice(this.param).subscribe(res => {
+      this.prices = res;
+      this.eventName = this.prices['ename'];
+      console.log(this.prices);
+    });
   }
 
   constructor(private activatedRoute: ActivatedRoute, private backendService: BackendService) { }

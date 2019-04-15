@@ -40,6 +40,7 @@ export class BookingsComponent implements OnInit {
 
   rating(eid, ename) {
     this.eventId = eid;
+    console.log(eid);
     this.eventName = ename;
   }
 

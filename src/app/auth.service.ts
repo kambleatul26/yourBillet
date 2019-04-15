@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  url = 'http://secure-sands-68903.herokuapp.com/';
+  url = 'https://1a47bae7.ngrok.io/';
 
   constructor(private http: HttpClient, private router: Router) { }
 

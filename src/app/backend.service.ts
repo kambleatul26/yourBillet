@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BackendService {
 
-  url = 'http://secure-sands-68903.herokuapp.com/';
+  url = 'https://1a47bae7.ngrok.io/';
 
   regEvent(event) {
     this.http.post(this.url + 'event/create', event)
@@ -16,7 +16,7 @@ export class BackendService {
   }
 
   homeData() {
-    return this.http.get('http://www.mocky.io/v2/5ca9dc4f370000220c492edc');
+    return this.http.get('https://www.mocky.io/v2/5ca9dc4f370000220c492edc');
     // return this.http.get<HomeData[]>('/src/app/datahome.json');
   }
 
@@ -59,7 +59,8 @@ export class BackendService {
   rate(id, num) {
     this.http.post(this.url + 'event/rating', {
       'eventId': id,
-      'rating': Number(num)
+      'rating': Number(num),
+      'user': localStorage.getItem('user')
     })
     .subscribe(res => {
       console.log(res);
@@ -78,6 +79,6 @@ ORGANIZED RATINGS
 
 
 SEARCH
-POPULAR EVENTS HOME / ACTIVE & PAST
+POPULAR
 
 */

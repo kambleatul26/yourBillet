@@ -46,13 +46,13 @@ import { FooterComponent } from './footer/footer.component';
     }),
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
-      {path: 'home', component: HomeComponent},
-      {path: 'home/:eventName', component: PaymentComponent},
-      {path: 'dashboard/create', component: CreateEventComponent},
-      {path: 'dashboard/myevents', component: EventsComponent},
+      {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+      {path: 'home/:eventName', component: PaymentComponent, canActivate: [AuthGuard]},
+      {path: 'dashboard/create', component: CreateEventComponent, canActivate: [AuthGuard]},
+      {path: 'dashboard/myevents', component: EventsComponent, canActivate: [AuthGuard]},
       {path: 'dashboard/allevents', component: AlleventsComponent},
-      {path: 'dashboard/allevents/:eventName', component: PaymentComponent},
-      {path: 'dashboard/bookings', component: BookingsComponent},
+      {path: 'dashboard/allevents/:eventName', component: PaymentComponent, canActivate: [AuthGuard]},
+      {path: 'dashboard/bookings', component: BookingsComponent, canActivate: [AuthGuard]},
       {path: '**', component: HomeComponent}
     ])
   ],

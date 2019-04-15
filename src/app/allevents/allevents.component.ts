@@ -30,7 +30,7 @@ export class AlleventsComponent implements OnInit {
 
     this.backendService.allEvent().subscribe(res => {
       this.allEvent$ = res;
-      // console.log(res);
+      console.log(res);
     });
   }
 

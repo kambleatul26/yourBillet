@@ -150,7 +150,7 @@
         </form>
     </div>
     <div class="show-on-small hide-on-med-and-up">
-        <form #eventForm="ngForm">
+        <form #eventForm1="ngForm">
             <mat-vertical-stepper [linear]="isLinear" #stepper>
                 <mat-step>
                     <ng-template matStepLabel>Event Details</ng-template>
@@ -283,7 +283,7 @@
                             <textarea name="ticket_desc" class="materialize-textarea" ngModel></textarea>
                             <label for="ticket_desc">Ticket Description</label>
                         </div>
-                        <button type="submit" (click)="eventFunc(eventForm)" class="btn waves-effect col s12" style="background-color: #5D001E">SUBMIT EVENT</button>
+                        <button type="submit" (click)="eventFunc(eventForm1)" class="btn waves-effect col s12" style="background-color: #5D001E">SUBMIT EVENT</button>
                         <br>
                         <br>
                         <button class="waves-effect btn-small" matStepperPrevious>Back</button>
